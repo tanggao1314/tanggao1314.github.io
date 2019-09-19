@@ -5,30 +5,28 @@
   
 
   
-  <title>Hexo</title>
+  <title>理清Java日志体系 | Hexo</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="理清Java混乱的日志体系​    一次偶然的机会，在一个项目工程中发现很多日志jar包，期初以为都要加入classpath，结果发现jar冲突，弄了好久才解决问题，为了知其所以然，系统的学习了一下Java日志体系，才发现原来简单的log.info() 当中水这么深，果然是有人的地方就有江湖，技术框架也不例外。 日志体系历史道听途说了一段历史，据说是造成了日志体系混乱的原因  log4j（作者Ce">
+  <meta name="description" content="​    一次偶然的机会，在一个项目工程中发现很多日志jar包，期初以为都要加入classpath，结果发现jar冲突，弄了好久才解决问题，为了知其所以然，系统的学习了一下Java日志体系，才发现原来简单的log.info() 当中水这么深，果然是有人的地方就有江湖，技术框架也不例外。 日志体系历史道听途说了一段历史，据说是造成了日志体系混乱的原因  log4j（作者Ceki Gülcü）出来时就">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Hexo">
-<meta property="og:url" content="http://yoursite.com/2019/09/18/Java日志体系/index.html">
+<meta property="og:title" content="理清Java日志体系">
+<meta property="og:url" content="http://yoursite.com/2019/09/19/理清Java日志体系/index.html">
 <meta property="og:site_name" content="Hexo">
-<meta property="og:description" content="理清Java混乱的日志体系​    一次偶然的机会，在一个项目工程中发现很多日志jar包，期初以为都要加入classpath，结果发现jar冲突，弄了好久才解决问题，为了知其所以然，系统的学习了一下Java日志体系，才发现原来简单的log.info() 当中水这么深，果然是有人的地方就有江湖，技术框架也不例外。 日志体系历史道听途说了一段历史，据说是造成了日志体系混乱的原因  log4j（作者Ce">
+<meta property="og:description" content="​    一次偶然的机会，在一个项目工程中发现很多日志jar包，期初以为都要加入classpath，结果发现jar冲突，弄了好久才解决问题，为了知其所以然，系统的学习了一下Java日志体系，才发现原来简单的log.info() 当中水这么深，果然是有人的地方就有江湖，技术框架也不例外。 日志体系历史道听途说了一段历史，据说是造成了日志体系混乱的原因  log4j（作者Ceki Gülcü）出来时就">
 <meta property="og:locale" content="en">
-<meta property="og:image" content="http://yoursite.com/2019/09/18/Java日志体系/1568788072871.png">
-<meta property="og:image" content="http://yoursite.com/2019/09/18/Java日志体系/1568788072871.png">
-<meta property="og:image" content="http://yoursite.com/2019/09/18/Java日志体系/1568792194404.png">
-<meta property="og:image" content="http://yoursite.com/2019/09/18/Java日志体系/1568792194404.png">
+<meta property="og:image" content="http://yoursite.com/2019/09/19/理清Java日志体系/1568788072871.png">
+<meta property="og:image" content="http://yoursite.com/2019/09/19/理清Java日志体系/1568792194404.png">
 <meta property="og:image" content="https://www.slf4j.org/images/concrete-bindings.png">
-<meta property="og:image" content="http://yoursite.com/2019/09/18/Java日志体系/1568715529262.png">
+<meta property="og:image" content="http://yoursite.com/2019/09/19/理清Java日志体系/1568715529262.png">
 <meta property="og:image" content="http://ifeve.com/wp-content/uploads/2016/04/legacy.png">
-<meta property="og:image" content="http://yoursite.com/2019/09/18/Java日志体系/1568789540216.png">
-<meta property="og:image" content="http://yoursite.com/2019/09/18/Java日志体系/1568789652326.png">
+<meta property="og:image" content="http://yoursite.com/2019/09/19/理清Java日志体系/1568789540216.png">
+<meta property="og:image" content="http://yoursite.com/2019/09/19/理清Java日志体系/1568789652326.png">
 <meta property="og:image" content="https://pic2.zhimg.com/80/v2-57092397ff9d7a69d359856ef19e769d_hd.jpg">
-<meta property="og:updated_time" content="2019-09-19T02:24:29.498Z">
+<meta property="og:updated_time" content="2019-09-19T12:02:04.237Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Hexo">
-<meta name="twitter:description" content="理清Java混乱的日志体系​    一次偶然的机会，在一个项目工程中发现很多日志jar包，期初以为都要加入classpath，结果发现jar冲突，弄了好久才解决问题，为了知其所以然，系统的学习了一下Java日志体系，才发现原来简单的log.info() 当中水这么深，果然是有人的地方就有江湖，技术框架也不例外。 日志体系历史道听途说了一段历史，据说是造成了日志体系混乱的原因  log4j（作者Ce">
-<meta name="twitter:image" content="http://yoursite.com/2019/09/18/Java日志体系/1568788072871.png">
+<meta name="twitter:title" content="理清Java日志体系">
+<meta name="twitter:description" content="​    一次偶然的机会，在一个项目工程中发现很多日志jar包，期初以为都要加入classpath，结果发现jar冲突，弄了好久才解决问题，为了知其所以然，系统的学习了一下Java日志体系，才发现原来简单的log.info() 当中水这么深，果然是有人的地方就有江湖，技术框架也不例外。 日志体系历史道听途说了一段历史，据说是造成了日志体系混乱的原因  log4j（作者Ceki Gülcü）出来时就">
+<meta name="twitter:image" content="http://yoursite.com/2019/09/19/理清Java日志体系/1568788072871.png">
   
     <link rel="alternate" href="/atom.xml" title="Hexo" type="application/atom+xml">
   
@@ -75,19 +73,29 @@
   </div>
 </header>
       <div class="outer">
-        <section id="main"><article id="post-Java日志体系" class="article article-type-post" itemscope itemprop="blogPost">
+        <section id="main"><article id="post-理清Java日志体系" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
-    <a href="/2019/09/18/Java日志体系/" class="article-date">
-  <time datetime="2019-09-18T15:15:35.447Z" itemprop="datePublished">2019-09-18</time>
+    <a href="/2019/09/19/理清Java日志体系/" class="article-date">
+  <time datetime="2019-09-19T11:55:53.000Z" itemprop="datePublished">2019-09-19</time>
 </a>
     
   </div>
   <div class="article-inner">
     
     
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      理清Java日志体系
+    </h1>
+  
+
+      </header>
+    
     <div class="article-entry" itemprop="articleBody">
       
-        <h1 id="理清Java混乱的日志体系"><a href="#理清Java混乱的日志体系" class="headerlink" title="理清Java混乱的日志体系"></a>理清Java混乱的日志体系</h1><p>​    一次偶然的机会，在一个项目工程中发现很多日志jar包，期初以为都要加入classpath，结果发现jar冲突，弄了好久才解决问题，为了知其所以然，系统的学习了一下Java日志体系，才发现原来简单的log.info() 当中水这么深，果然是有人的地方就有江湖，技术框架也不例外。</p>
+        <p>​    一次偶然的机会，在一个项目工程中发现很多日志jar包，期初以为都要加入classpath，结果发现jar冲突，弄了好久才解决问题，为了知其所以然，系统的学习了一下Java日志体系，才发现原来简单的log.info() 当中水这么深，果然是有人的地方就有江湖，技术框架也不例外。</p>
 <h2 id="日志体系历史"><a href="#日志体系历史" class="headerlink" title="日志体系历史"></a>日志体系历史</h2><p>道听途说了一段历史，据说是造成了日志体系混乱的原因</p>
 <ol>
 <li><code>log4j</code>（作者Ceki Gülcü）出来时就等到了广泛的应用（注意这里是直接使用），是Java日志事实上的标准，并成为了Apache的项目</li>
@@ -97,12 +105,10 @@
 <li>这样看上去也挺美好的，但是log4j的作者觉得JCL不好用，自己开发出<code>slf4j</code>，它跟JCL类似，本身不替供日志具体实现，只对外提供接口或门面。目的就是为了替代JCL。同时，还开发出<code>logback</code>，一个比log4j拥有更高性能的组件，目的是为了替代log4j。</li>
 <li>Apache参考了logback,并做了一系列优化，推出了<code>log4j2</code></li>
 </ol>
-<h2 id="日志体系组成"><a href="#日志体系组成" class="headerlink" title="日志体系组成"></a>日志体系组成</h2><p><img src="/2019/09/18/Java日志体系/1568788072871.png" alt="日志体系组成"></p>
-<p>​        <img src="/2019/09/18/Java日志体系/1568788072871.png" title="日志体系组成"></p>
+<h2 id="日志体系组成"><a href="#日志体系组成" class="headerlink" title="日志体系组成"></a>日志体系组成</h2><p><img src="/2019/09/19/理清Java日志体系/1568788072871.png" alt="日志体系组成"></p>
+<p>​    </p>
 <h2 id="各部分调用关系"><a href="#各部分调用关系" class="headerlink" title="各部分调用关系"></a>各部分调用关系</h2><p>画了一张图，下图说明了各个组织之前的调用关系</p>
-<p><img src="/2019/09/18/Java日志体系/1568792194404.png" alt></p>
-<img src="/2019/09/18/Java日志体系/1568792194404.png" title="日志体系组成">
-
+<p><img src="/2019/09/19/理清Java日志体系/1568792194404.png" alt="调用关系"></p>
 <p>举个小例子，比如客户端用slf4j做门面，用log4j2做日志实现的案例</p>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> org.slf4j.Logger;</span><br><span class="line"><span class="keyword">import</span> org.slf4j.LoggerFactory;</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> java.io.IOException;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Test1</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> <span class="keyword">throws</span> IOException </span>&#123;</span><br><span class="line"></span><br><span class="line">        Logger logger = LoggerFactory.getLogger(<span class="string">"chapters.introduction.HelloWorld1"</span>);</span><br><span class="line">        logger.info(<span class="string">"Hello world."</span>);</span><br><span class="line">        logger.debug(<span class="string">"Hello world."</span>);</span><br><span class="line">        logger.error(<span class="string">"Hello world."</span>);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
@@ -115,17 +121,17 @@
 <h3 id="日志框架"><a href="#日志框架" class="headerlink" title="日志框架"></a>日志框架</h3><p>​    具体的日志实现，包括log4j,log4j2,jul,locback,其他</p>
 <h3 id="日志门面"><a href="#日志门面" class="headerlink" title="日志门面"></a>日志门面</h3><p>​    提供统一的日志调用接口，面向抽象编程，客户端直接调用门面接口获取日志类,jcl(commons-logging)、slf4j(Simple Logging Facade for JAVA)</p>
 <h3 id="绑定器"><a href="#绑定器" class="headerlink" title="绑定器"></a>绑定器</h3><p> 客户端调用日志门面接口API获取日志类，需要日志门面返回实际的日志实现类，而日志门面本身不提供日志实现，需要绑定到具体的日志框架，绑定后返回对应日志框架的日志实现类。</p>
-<p><img src="https://www.slf4j.org/images/concrete-bindings.png" alt="ç¹å»æ¾å¤§"> </p>
+<p><img src="https://www.slf4j.org/images/concrete-bindings.png" alt="绑定关系图"> </p>
 <p>下表是具体的绑定实现方案</p>
-<p><img src="/2019/09/18/Java日志体系/1568715529262.png" alt></p>
+<p><img src="/2019/09/19/理清Java日志体系/1568715529262.png" alt="绑定方案"></p>
 <h3 id="桥接器"><a href="#桥接器" class="headerlink" title="桥接器"></a>桥接器</h3><p>​    为了让SLF4J承接不同的日志框架（日志框架转化为SLF4J），因而产生了桥接器,可以实现让当前项目中采用的其他日志框架转换为SLF4J</p>
-<p><img src="http://ifeve.com/wp-content/uploads/2016/04/legacy.png" alt="img"> </p>
+<p><img src="http://ifeve.com/wp-content/uploads/2016/04/legacy.png" alt="桥接图"> </p>
 <p>下表是具体的桥接实现方案</p>
-<p><img src="/2019/09/18/Java日志体系/1568789540216.png" alt></p>
+<p><img src="/2019/09/19/理清Java日志体系/1568789540216.png" alt="桥接方案1"></p>
 <p>同时SLF4j也可以转换回其他日志框架,具体桥接方案如下表</p>
-<p><img src="/2019/09/18/Java日志体系/1568789652326.png" alt></p>
+<p><img src="/2019/09/19/理清Java日志体系/1568789652326.png" alt="桥接方案2"></p>
 <h2 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h2><p>网上找的一张图，很好的反映了日志体系中日志门面-日志绑定器-日志框架实现-日志桥接器的关系图：</p>
-<p><img src="https://pic2.zhimg.com/80/v2-57092397ff9d7a69d359856ef19e769d_hd.jpg" alt="img"> </p>
+<p><img src="https://pic2.zhimg.com/80/v2-57092397ff9d7a69d359856ef19e769d_hd.jpg" alt="总结"> </p>
 <p>留个小目标，后续如果有时间还将学习一下log4j2和slf4j源码</p>
 <p>参考资料：</p>
 <p><a href="https://www.slf4j.org/manual.html" target="_blank" rel="noopener">SLF4J官网</a></p>
@@ -134,7 +140,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2019/09/18/Java日志体系/" data-id="ck0q2o2nn0000usqpas5iso7u" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2019/09/19/理清Java日志体系/" data-id="ck0qncfjg000114qpuigzzn5z" class="article-share-link">Share</a>
       
       
     </footer>
@@ -183,7 +189,7 @@
       <ul>
         
           <li>
-            <a href="/2019/09/18/Java日志体系/">(no title)</a>
+            <a href="/2019/09/19/理清Java日志体系/">理清Java日志体系</a>
           </li>
         
           <li>
