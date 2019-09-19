@@ -84,9 +84,12 @@
 <li>这样看上去也挺美好的，但是log4j的作者觉得JCL不好用，自己开发出<code>slf4j</code>，它跟JCL类似，本身不替供日志具体实现，只对外提供接口或门面。目的就是为了替代JCL。同时，还开发出<code>logback</code>，一个比log4j拥有更高性能的组件，目的是为了替代log4j。</li>
 <li>Apache参考了logback,并做了一系列优化，推出了<code>log4j2</code></li>
 </ol>
-<h2 id="日志体系组成"><a href="#日志体系组成" class="headerlink" title="日志体系组成"></a>日志体系组成</h2><p><img src="E:%5C1blog%5CMyBlog%5Csource_img%5C1568788072871.png" alt></p>
+<h2 id="日志体系组成"><a href="#日志体系组成" class="headerlink" title="日志体系组成"></a>日志体系组成</h2><p><img src="/2019/09/18/Java日志体系/1568788072871.png" alt="日志体系组成"></p>
+<p>​        <img src="/2019/09/18/Java日志体系/1568788072871.png" title="日志体系组成"></p>
 <h2 id="各部分调用关系"><a href="#各部分调用关系" class="headerlink" title="各部分调用关系"></a>各部分调用关系</h2><p>画了一张图，下图说明了各个组织之前的调用关系</p>
-<p><img src="E:%5C1blog%5CMyBlog%5Csource_img%5C1568792194404.png" alt></p>
+<p><img src="/2019/09/18/Java日志体系/1568792194404.png" alt></p>
+<img src="/2019/09/18/Java日志体系/1568792194404.png" title="日志体系组成">
+
 <p>举个小例子，比如客户端用slf4j做门面，用log4j2做日志实现的案例</p>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> org.slf4j.Logger;</span><br><span class="line"><span class="keyword">import</span> org.slf4j.LoggerFactory;</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> java.io.IOException;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Test1</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> <span class="keyword">throws</span> IOException </span>&#123;</span><br><span class="line"></span><br><span class="line">        Logger logger = LoggerFactory.getLogger(<span class="string">"chapters.introduction.HelloWorld1"</span>);</span><br><span class="line">        logger.info(<span class="string">"Hello world."</span>);</span><br><span class="line">        logger.debug(<span class="string">"Hello world."</span>);</span><br><span class="line">        logger.error(<span class="string">"Hello world."</span>);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
@@ -101,13 +104,13 @@
 <h3 id="绑定器"><a href="#绑定器" class="headerlink" title="绑定器"></a>绑定器</h3><p> 客户端调用日志门面接口API获取日志类，需要日志门面返回实际的日志实现类，而日志门面本身不提供日志实现，需要绑定到具体的日志框架，绑定后返回对应日志框架的日志实现类。</p>
 <p><img src="https://www.slf4j.org/images/concrete-bindings.png" alt="ç¹å»æ¾å¤§"> </p>
 <p>下表是具体的绑定实现方案</p>
-<p><img src="E:%5C1blog%5CMyBlog%5Csource_img%5C1568715529262.png" alt></p>
+<p><img src="/2019/09/18/Java日志体系/1568715529262.png" alt></p>
 <h3 id="桥接器"><a href="#桥接器" class="headerlink" title="桥接器"></a>桥接器</h3><p>​    为了让SLF4J承接不同的日志框架（日志框架转化为SLF4J），因而产生了桥接器,可以实现让当前项目中采用的其他日志框架转换为SLF4J</p>
 <p><img src="http://ifeve.com/wp-content/uploads/2016/04/legacy.png" alt="img"> </p>
 <p>下表是具体的桥接实现方案</p>
-<p><img src="E:%5C1blog%5CMyBlog%5Csource_img%5C1568789540216.png" alt></p>
+<p><img src="/2019/09/18/Java日志体系/1568789540216.png" alt></p>
 <p>同时SLF4j也可以转换回其他日志框架,具体桥接方案如下表</p>
-<p><img src="E:%5C1blog%5CMyBlog%5Csource_img%5C1568789652326.png" alt></p>
+<p><img src="/2019/09/18/Java日志体系/1568789652326.png" alt></p>
 <h2 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h2><p>网上找的一张图，很好的反映了日志体系中日志门面-日志绑定器-日志框架实现-日志桥接器的关系图：</p>
 <p><img src="https://pic2.zhimg.com/80/v2-57092397ff9d7a69d359856ef19e769d_hd.jpg" alt="img"> </p>
 <p>留个小目标，后续如果有时间还将学习一下log4j2和slf4j源码</p>
@@ -118,7 +121,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2019/09/18/Java日志体系/" data-id="ck0pf4yg00000ssqpw1jj6zt6" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2019/09/18/Java日志体系/" data-id="ck0q2o2nn0000usqpas5iso7u" class="article-share-link">Share</a>
       
       
     </footer>
@@ -154,7 +157,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2019/09/18/article-title/" data-id="ck0pf4yg70001ssqpmr0hypfo" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2019/09/18/article-title/" data-id="ck0q2o2nx0002usqpehxiwi4i" class="article-share-link">Share</a>
       
       
     </footer>
@@ -203,7 +206,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2019/09/18/hello-world/" data-id="ck0pf4ygb0002ssqpgxoac7gm" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2019/09/18/hello-world/" data-id="ck0q2o2nu0001usqpem9uoxoa" class="article-share-link">Share</a>
       
       
     </footer>
