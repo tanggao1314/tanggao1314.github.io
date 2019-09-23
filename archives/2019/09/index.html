@@ -6,26 +6,57 @@
   <meta name="keywords" content>
   <meta name="description" content="汤小高的个人博客">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-<meta name="description" content="​    一次偶然的机会，在一个项目工程中发现很多日志jar包，期初以为都要加入classpath，结果发现jar冲突，弄了好久才解决问题，为了知其所以然，系统的学习了一下Java日志体系，才发现原来简单的log.info() 当中水这么深，果然是有人的地方就有江湖，技术框架也不例外。 日志体系历史道听途说了一段历史，据说是造成了日志体系混乱的原因  log4j（作者Ceki Gülcü）出来时就">
+<meta name="description" content="比武大会衡山，武当 ，峨眉，华山，少林，昆仑，蜀山七大派召开新一届英雄大会，根据各掌门的武艺排名来划分江湖地位。当前各门派掌门的实际武力值如下          衡山-60   武当-80  峨眉-70  华山-75 少林-90 昆仑-85 蜀山-100  上一届英雄大会的江湖地位从低到高 依次为  华山，峨眉，昆仑，武当，衡山，蜀山，少林  顾本次安排座位也是按上次江湖地位来安排的，少林上届地位">
 <meta property="og:type" content="article">
-<meta property="og:title" content="理清Java日志体系">
-<meta property="og:url" content="https://tanggao1314.github.io/2019/09/19/理清Java日志体系/index.html">
+<meta property="og:title" content="英雄大会之华山论剑到冒泡排序">
+<meta property="og:url" content="https://tanggao1314.github.io/2019/09/23/英雄大会之华山论剑到冒泡排序/index.html">
 <meta property="og:site_name" content="汤小高的个人博客">
-<meta property="og:description" content="​    一次偶然的机会，在一个项目工程中发现很多日志jar包，期初以为都要加入classpath，结果发现jar冲突，弄了好久才解决问题，为了知其所以然，系统的学习了一下Java日志体系，才发现原来简单的log.info() 当中水这么深，果然是有人的地方就有江湖，技术框架也不例外。 日志体系历史道听途说了一段历史，据说是造成了日志体系混乱的原因  log4j（作者Ceki Gülcü）出来时就">
+<meta property="og:description" content="比武大会衡山，武当 ，峨眉，华山，少林，昆仑，蜀山七大派召开新一届英雄大会，根据各掌门的武艺排名来划分江湖地位。当前各门派掌门的实际武力值如下          衡山-60   武当-80  峨眉-70  华山-75 少林-90 昆仑-85 蜀山-100  上一届英雄大会的江湖地位从低到高 依次为  华山，峨眉，昆仑，武当，衡山，蜀山，少林  顾本次安排座位也是按上次江湖地位来安排的，少林上届地位">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:image" content="https://tanggao1314.github.io/2019/09/19/理清Java日志体系/1568788072871.png">
-<meta property="og:image" content="https://tanggao1314.github.io/2019/09/19/理清Java日志体系/1568792194404.png">
-<meta property="og:image" content="https://www.slf4j.org/images/concrete-bindings.png">
-<meta property="og:image" content="https://tanggao1314.github.io/2019/09/19/理清Java日志体系/1568715529262.png">
-<meta property="og:image" content="http://ifeve.com/wp-content/uploads/2016/04/legacy.png">
-<meta property="og:image" content="https://tanggao1314.github.io/2019/09/19/理清Java日志体系/1568789540216.png">
-<meta property="og:image" content="https://tanggao1314.github.io/2019/09/19/理清Java日志体系/1568789652326.png">
-<meta property="og:image" content="https://pic2.zhimg.com/80/v2-57092397ff9d7a69d359856ef19e769d_hd.jpg">
-<meta property="og:updated_time" content="2019-09-19T12:02:04.237Z">
+<meta property="og:image" content="https://tanggao1314.github.io/2019/09/23/英雄大会之华山论剑到冒泡排序/C:%5CUsers%5CADMINI~1%5CAppData%5CLocal%5CTemp%5C1569225273941.png">
+<meta property="og:image" content="https://tanggao1314.github.io/2019/09/23/英雄大会之华山论剑到冒泡排序/C:%5CUsers%5CADMINI~1%5CAppData%5CLocal%5CTemp%5C1569225767110.png">
+<meta property="og:image" content="https://tanggao1314.github.io/2019/09/23/英雄大会之华山论剑到冒泡排序/C:%5CUsers%5CADMINI~1%5CAppData%5CLocal%5CTemp%5C1569225909670.png">
+<meta property="og:image" content="https://tanggao1314.github.io/2019/09/23/英雄大会之华山论剑到冒泡排序/C:%5CUsers%5CADMINI~1%5CAppData%5CLocal%5CTemp%5C1569226065107.png">
+<meta property="og:image" content="https://tanggao1314.github.io/2019/09/23/英雄大会之华山论剑到冒泡排序/C:%5CUsers%5CADMINI~1%5CAppData%5CLocal%5CTemp%5C1569226310119.png">
+<meta property="og:image" content="https://tanggao1314.github.io/2019/09/23/英雄大会之华山论剑到冒泡排序/C:%5CUsers%5CADMINI~1%5CAppData%5CLocal%5CTemp%5C1569226379291.png">
+<meta property="og:image" content="https://tanggao1314.github.io/2019/09/23/英雄大会之华山论剑到冒泡排序/C:%5CUsers%5CADMINI~1%5CAppData%5CLocal%5CTemp%5C1569226544650.png">
+<meta property="og:image" content="https://tanggao1314.github.io/2019/09/23/英雄大会之华山论剑到冒泡排序/C:%5CUsers%5CADMINI~1%5CAppData%5CLocal%5CTemp%5C1569226586118.png">
+<meta property="og:image" content="https://tanggao1314.github.io/2019/09/23/英雄大会之华山论剑到冒泡排序/C:%5CUsers%5CADMINI~1%5CAppData%5CLocal%5CTemp%5C1569226683695.png">
+<meta property="og:image" content="https://tanggao1314.github.io/2019/09/23/英雄大会之华山论剑到冒泡排序/C:%5CUsers%5CADMINI~1%5CAppData%5CLocal%5CTemp%5C1569226866260.png">
+<meta property="og:image" content="https://tanggao1314.github.io/2019/09/23/英雄大会之华山论剑到冒泡排序/C:%5CUsers%5CADMINI~1%5CAppData%5CLocal%5CTemp%5C1569226900406.png">
+<meta property="og:image" content="https://tanggao1314.github.io/2019/09/23/英雄大会之华山论剑到冒泡排序/C:%5CUsers%5CADMINI~1%5CAppData%5CLocal%5CTemp%5C1569230554837.png">
+<meta property="og:image" content="https://tanggao1314.github.io/2019/09/23/英雄大会之华山论剑到冒泡排序/C:%5CUsers%5CADMINI~1%5CAppData%5CLocal%5CTemp%5C1569227638511.png">
+<meta property="og:image" content="https://tanggao1314.github.io/2019/09/23/英雄大会之华山论剑到冒泡排序/C:%5CUsers%5CADMINI~1%5CAppData%5CLocal%5CTemp%5C1569227733013.png">
+<meta property="og:image" content="https://tanggao1314.github.io/2019/09/23/英雄大会之华山论剑到冒泡排序/C:%5CUsers%5CADMINI~1%5CAppData%5CLocal%5CTemp%5C1569227811886.png">
+<meta property="og:image" content="https://tanggao1314.github.io/2019/09/23/英雄大会之华山论剑到冒泡排序/C:%5CUsers%5CADMINI~1%5CAppData%5CLocal%5CTemp%5C1569228056330.png">
+<meta property="og:image" content="https://tanggao1314.github.io/2019/09/23/英雄大会之华山论剑到冒泡排序/C:%5CUsers%5CADMINI~1%5CAppData%5CLocal%5CTemp%5C1569228189290.png">
+<meta property="og:image" content="https://tanggao1314.github.io/2019/09/23/英雄大会之华山论剑到冒泡排序/C:%5CUsers%5CADMINI~1%5CAppData%5CLocal%5CTemp%5C1569228260744.png">
+<meta property="og:image" content="https://tanggao1314.github.io/2019/09/23/英雄大会之华山论剑到冒泡排序/C:%5CUsers%5CADMINI~1%5CAppData%5CLocal%5CTemp%5C1569230393993.png">
+<meta property="og:image" content="https://tanggao1314.github.io/2019/09/23/英雄大会之华山论剑到冒泡排序/C:%5CUsers%5CADMINI~1%5CAppData%5CLocal%5CTemp%5C1569228607366.png">
+<meta property="og:image" content="https://tanggao1314.github.io/2019/09/23/英雄大会之华山论剑到冒泡排序/C:%5CUsers%5CADMINI~1%5CAppData%5CLocal%5CTemp%5C1569228710430.png">
+<meta property="og:image" content="https://tanggao1314.github.io/2019/09/23/英雄大会之华山论剑到冒泡排序/C:%5CUsers%5CADMINI~1%5CAppData%5CLocal%5CTemp%5C1569228765517.png">
+<meta property="og:image" content="https://tanggao1314.github.io/2019/09/23/英雄大会之华山论剑到冒泡排序/C:%5CUsers%5CADMINI~1%5CAppData%5CLocal%5CTemp%5C1569228837932.png">
+<meta property="og:image" content="https://tanggao1314.github.io/2019/09/23/英雄大会之华山论剑到冒泡排序/C:%5CUsers%5CADMINI~1%5CAppData%5CLocal%5CTemp%5C1569228946283.png">
+<meta property="og:image" content="https://tanggao1314.github.io/2019/09/23/英雄大会之华山论剑到冒泡排序/C:%5CUsers%5CADMINI~1%5CAppData%5CLocal%5CTemp%5C1569230240302.png">
+<meta property="og:image" content="https://tanggao1314.github.io/2019/09/23/英雄大会之华山论剑到冒泡排序/C:%5CUsers%5CADMINI~1%5CAppData%5CLocal%5CTemp%5C1569229282659.png">
+<meta property="og:image" content="https://tanggao1314.github.io/2019/09/23/英雄大会之华山论剑到冒泡排序/C:%5CUsers%5CADMINI~1%5CAppData%5CLocal%5CTemp%5C1569229322602.png">
+<meta property="og:image" content="https://tanggao1314.github.io/2019/09/23/英雄大会之华山论剑到冒泡排序/C:%5CUsers%5CADMINI~1%5CAppData%5CLocal%5CTemp%5C1569229618231.png">
+<meta property="og:image" content="https://tanggao1314.github.io/2019/09/23/英雄大会之华山论剑到冒泡排序/C:%5CUsers%5CADMINI~1%5CAppData%5CLocal%5CTemp%5C1569229759357.png">
+<meta property="og:image" content="https://tanggao1314.github.io/2019/09/23/英雄大会之华山论剑到冒泡排序/C:%5CUsers%5CADMINI~1%5CAppData%5CLocal%5CTemp%5C1569229930368.png">
+<meta property="og:image" content="https://tanggao1314.github.io/2019/09/23/英雄大会之华山论剑到冒泡排序/C:%5CUsers%5CADMINI~1%5CAppData%5CLocal%5CTemp%5C1569230961356.png">
+<meta property="og:image" content="https://tanggao1314.github.io/2019/09/23/英雄大会之华山论剑到冒泡排序/C:%5CUsers%5CADMINI~1%5CAppData%5CLocal%5CTemp%5C1569231031856.png">
+<meta property="og:image" content="https://tanggao1314.github.io/2019/09/23/英雄大会之华山论剑到冒泡排序/C:%5CUsers%5CADMINI~1%5CAppData%5CLocal%5CTemp%5C1569231121707.png">
+<meta property="og:image" content="https://tanggao1314.github.io/2019/09/23/英雄大会之华山论剑到冒泡排序/C:%5CUsers%5CADMINI~1%5CAppData%5CLocal%5CTemp%5C1569231216690.png">
+<meta property="og:image" content="https://tanggao1314.github.io/2019/09/23/英雄大会之华山论剑到冒泡排序/C:%5CUsers%5CADMINI~1%5CAppData%5CLocal%5CTemp%5C1569231345294.png">
+<meta property="og:image" content="https://tanggao1314.github.io/2019/09/23/英雄大会之华山论剑到冒泡排序/C:%5CUsers%5CADMINI~1%5CAppData%5CLocal%5CTemp%5C1569231474133.png">
+<meta property="og:image" content="https://tanggao1314.github.io/2019/09/23/英雄大会之华山论剑到冒泡排序/C:%5CUsers%5CADMINI~1%5CAppData%5CLocal%5CTemp%5C1569229930368.png">
+<meta property="og:image" content="https://tanggao1314.github.io/2019/09/23/英雄大会之华山论剑到冒泡排序/C:%5CUsers%5CADMINI~1%5CAppData%5CLocal%5CTemp%5C1569231121707.png">
+<meta property="og:image" content="https://tanggao1314.github.io/2019/09/23/英雄大会之华山论剑到冒泡排序/C:%5CUsers%5CADMINI~1%5CAppData%5CLocal%5CTemp%5C1569231474133.png">
+<meta property="og:updated_time" content="2019-09-23T10:29:49.456Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="理清Java日志体系">
-<meta name="twitter:description" content="​    一次偶然的机会，在一个项目工程中发现很多日志jar包，期初以为都要加入classpath，结果发现jar冲突，弄了好久才解决问题，为了知其所以然，系统的学习了一下Java日志体系，才发现原来简单的log.info() 当中水这么深，果然是有人的地方就有江湖，技术框架也不例外。 日志体系历史道听途说了一段历史，据说是造成了日志体系混乱的原因  log4j（作者Ceki Gülcü）出来时就">
-<meta name="twitter:image" content="https://tanggao1314.github.io/2019/09/19/理清Java日志体系/1568788072871.png">
+<meta name="twitter:title" content="英雄大会之华山论剑到冒泡排序">
+<meta name="twitter:description" content="比武大会衡山，武当 ，峨眉，华山，少林，昆仑，蜀山七大派召开新一届英雄大会，根据各掌门的武艺排名来划分江湖地位。当前各门派掌门的实际武力值如下          衡山-60   武当-80  峨眉-70  华山-75 少林-90 昆仑-85 蜀山-100  上一届英雄大会的江湖地位从低到高 依次为  华山，峨眉，昆仑，武当，衡山，蜀山，少林  顾本次安排座位也是按上次江湖地位来安排的，少林上届地位">
+<meta name="twitter:image" content="https://tanggao1314.github.io/2019/09/23/英雄大会之华山论剑到冒泡排序/C:%5CUsers%5CADMINI~1%5CAppData%5CLocal%5CTemp%5C1569225273941.png">
 
 
 <link rel="icon" href="/img/avatar.jpg">
@@ -136,7 +167,7 @@
 
 
 <ul>
-    <li><div class="all active">全部文章<small>(1)</small></div></li>
+    <li><div class="all active">全部文章<small>(2)</small></div></li>
     
 </ul>
 <div class="left-bottom">
@@ -148,8 +179,8 @@
     </div>
     <div><a class="about  hasFriend  site_url"  href="/about">关于</a><a style="width: 50%"  class="friends">友链</a></div>
 </div>
-<input type="hidden" id="yelog_site_posts_number" value="1">
-<input type="hidden" id="yelog_site_word_count" value="965">
+<input type="hidden" id="yelog_site_posts_number" value="2">
+<input type="hidden" id="yelog_site_word_count" value="2.9k">
 <div style="display: none">
     <span id="busuanzi_value_site_uv"></span>
     <span id="busuanzi_value_site_pv"></span>
@@ -194,6 +225,14 @@
            data-author="" >
             <span class="post-title" title="理清Java日志体系">理清Java日志体系</span>
             <span class="post-date" title="2019-09-19 19:55:53">2019/09/19</span>
+        </a>
+        
+        <a  class=""
+           href="/2019/09/23/英雄大会之华山论剑到冒泡排序/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="英雄大会之华山论剑到冒泡排序">英雄大会之华山论剑到冒泡排序</span>
+            <span class="post-date" title="2019-09-23 15:36:20">2019/09/23</span>
         </a>
         
     </nav>
