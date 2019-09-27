@@ -6,57 +6,19 @@
   <meta name="keywords" content>
   <meta name="description" content="英雄大会之华山论剑到冒泡排序 | 汤小高的个人博客">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-<meta name="description" content="比武大会衡山，武当 ，峨眉，华山，少林，昆仑，蜀山七大派召开新一届英雄大会，根据各掌门的武艺排名来划分江湖地位。当前各门派掌门的实际武力值如下          衡山-60   武当-80  峨眉-70  华山-75 少林-90 昆仑-85 蜀山-100  上一届英雄大会的江湖地位从低到高 依次为  华山，峨眉，昆仑，武当，衡山，蜀山，少林  顾本次安排座位也是按上次江湖地位来安排的，少林上届地位">
+<meta name="description" content="文件准备1234redis-3.0.6.tar.gz  redis-3.3.0.gem  ruby-2.3.0.tar.gz  zlib-1.2.11.tar.gz  安装redis前置工作在~/soft/下解压文件 1tar -zxvf redis-3.0.6.tar.gz  移动到~/ 1mv  redis-3.0.6  ../  安装进入redis-3.0.6 目录,进行安装  PREFIX">
 <meta property="og:type" content="article">
-<meta property="og:title" content="英雄大会之华山论剑到冒泡排序">
-<meta property="og:url" content="https://tanggao1314.github.io/2019/09/23/英雄大会之华山论剑到冒泡排序/index.html">
+<meta property="og:title" content="Redis高可用集群搭建最佳实践--踩坑血泪史">
+<meta property="og:url" content="https://tanggao1314.github.io/2019/09/26/Redis高可用集群搭建最佳实践--踩坑血泪史/index.html">
 <meta property="og:site_name" content="汤小高的个人博客">
-<meta property="og:description" content="比武大会衡山，武当 ，峨眉，华山，少林，昆仑，蜀山七大派召开新一届英雄大会，根据各掌门的武艺排名来划分江湖地位。当前各门派掌门的实际武力值如下          衡山-60   武当-80  峨眉-70  华山-75 少林-90 昆仑-85 蜀山-100  上一届英雄大会的江湖地位从低到高 依次为  华山，峨眉，昆仑，武当，衡山，蜀山，少林  顾本次安排座位也是按上次江湖地位来安排的，少林上届地位">
+<meta property="og:description" content="文件准备1234redis-3.0.6.tar.gz  redis-3.3.0.gem  ruby-2.3.0.tar.gz  zlib-1.2.11.tar.gz  安装redis前置工作在~/soft/下解压文件 1tar -zxvf redis-3.0.6.tar.gz  移动到~/ 1mv  redis-3.0.6  ../  安装进入redis-3.0.6 目录,进行安装  PREFIX">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:image" content="https://tanggao1314.github.io/2019/09/23/英雄大会之华山论剑到冒泡排序/1569225273941.png">
-<meta property="og:image" content="https://tanggao1314.github.io/2019/09/23/英雄大会之华山论剑到冒泡排序/1569225767110.png">
-<meta property="og:image" content="https://tanggao1314.github.io/2019/09/23/英雄大会之华山论剑到冒泡排序/1569225909670.png">
-<meta property="og:image" content="https://tanggao1314.github.io/2019/09/23/英雄大会之华山论剑到冒泡排序/1569226065107.png">
-<meta property="og:image" content="https://tanggao1314.github.io/2019/09/23/英雄大会之华山论剑到冒泡排序/1569226310119.png">
-<meta property="og:image" content="https://tanggao1314.github.io/2019/09/23/英雄大会之华山论剑到冒泡排序/1569226379291.png">
-<meta property="og:image" content="https://tanggao1314.github.io/2019/09/23/英雄大会之华山论剑到冒泡排序/1569226544650.png">
-<meta property="og:image" content="https://tanggao1314.github.io/2019/09/23/英雄大会之华山论剑到冒泡排序/1569226586118.png">
-<meta property="og:image" content="https://tanggao1314.github.io/2019/09/23/英雄大会之华山论剑到冒泡排序/1569226683695.png">
-<meta property="og:image" content="https://tanggao1314.github.io/2019/09/23/英雄大会之华山论剑到冒泡排序/1569226866260.png">
-<meta property="og:image" content="https://tanggao1314.github.io/2019/09/23/英雄大会之华山论剑到冒泡排序/1569226900406.png">
-<meta property="og:image" content="https://tanggao1314.github.io/2019/09/23/英雄大会之华山论剑到冒泡排序/1569230554837.png">
-<meta property="og:image" content="https://tanggao1314.github.io/2019/09/23/英雄大会之华山论剑到冒泡排序/1569227638511.png">
-<meta property="og:image" content="https://tanggao1314.github.io/2019/09/23/英雄大会之华山论剑到冒泡排序/1569227733013.png">
-<meta property="og:image" content="https://tanggao1314.github.io/2019/09/23/英雄大会之华山论剑到冒泡排序/1569227811886.png">
-<meta property="og:image" content="https://tanggao1314.github.io/2019/09/23/英雄大会之华山论剑到冒泡排序/1569228056330.png">
-<meta property="og:image" content="https://tanggao1314.github.io/2019/09/23/英雄大会之华山论剑到冒泡排序/1569228189290.png">
-<meta property="og:image" content="https://tanggao1314.github.io/2019/09/23/英雄大会之华山论剑到冒泡排序/1569228260744.png">
-<meta property="og:image" content="https://tanggao1314.github.io/2019/09/23/英雄大会之华山论剑到冒泡排序/1569230393993.png">
-<meta property="og:image" content="https://tanggao1314.github.io/2019/09/23/英雄大会之华山论剑到冒泡排序/1569228607366.png">
-<meta property="og:image" content="https://tanggao1314.github.io/2019/09/23/英雄大会之华山论剑到冒泡排序/1569228710430.png">
-<meta property="og:image" content="https://tanggao1314.github.io/2019/09/23/英雄大会之华山论剑到冒泡排序/1569228765517.png">
-<meta property="og:image" content="https://tanggao1314.github.io/2019/09/23/英雄大会之华山论剑到冒泡排序/1569228837932.png">
-<meta property="og:image" content="https://tanggao1314.github.io/2019/09/23/英雄大会之华山论剑到冒泡排序/1569228946283.png">
-<meta property="og:image" content="https://tanggao1314.github.io/2019/09/23/英雄大会之华山论剑到冒泡排序/1569230240302.png">
-<meta property="og:image" content="https://tanggao1314.github.io/2019/09/23/英雄大会之华山论剑到冒泡排序/1569229282659.png">
-<meta property="og:image" content="https://tanggao1314.github.io/2019/09/23/英雄大会之华山论剑到冒泡排序/1569229322602.png">
-<meta property="og:image" content="https://tanggao1314.github.io/2019/09/23/英雄大会之华山论剑到冒泡排序/1569229618231.png">
-<meta property="og:image" content="https://tanggao1314.github.io/2019/09/23/英雄大会之华山论剑到冒泡排序/1569229759357.png">
-<meta property="og:image" content="https://tanggao1314.github.io/2019/09/23/英雄大会之华山论剑到冒泡排序/1569229930368.png">
-<meta property="og:image" content="https://tanggao1314.github.io/2019/09/23/英雄大会之华山论剑到冒泡排序/1569230961356.png">
-<meta property="og:image" content="https://tanggao1314.github.io/2019/09/23/英雄大会之华山论剑到冒泡排序/1569231031856.png">
-<meta property="og:image" content="https://tanggao1314.github.io/2019/09/23/英雄大会之华山论剑到冒泡排序/1569231121707.png">
-<meta property="og:image" content="https://tanggao1314.github.io/2019/09/23/英雄大会之华山论剑到冒泡排序/1569231216690.png">
-<meta property="og:image" content="https://tanggao1314.github.io/2019/09/23/英雄大会之华山论剑到冒泡排序/1569231345294.png">
-<meta property="og:image" content="https://tanggao1314.github.io/2019/09/23/英雄大会之华山论剑到冒泡排序/1569231474133.png">
-<meta property="og:image" content="https://tanggao1314.github.io/2019/09/23/英雄大会之华山论剑到冒泡排序/1569229930368.png">
-<meta property="og:image" content="https://tanggao1314.github.io/2019/09/23/英雄大会之华山论剑到冒泡排序/1569231121707.png">
-<meta property="og:image" content="https://tanggao1314.github.io/2019/09/23/英雄大会之华山论剑到冒泡排序/1569231474133.png">
-<meta property="og:updated_time" content="2019-09-23T10:29:49.456Z">
+<meta property="og:image" content="https://tanggao1314.github.io/2019/09/26/Redis高可用集群搭建最佳实践--踩坑血泪史/1569576145101.png">
+<meta property="og:updated_time" content="2019-09-27T09:39:26.946Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="英雄大会之华山论剑到冒泡排序">
-<meta name="twitter:description" content="比武大会衡山，武当 ，峨眉，华山，少林，昆仑，蜀山七大派召开新一届英雄大会，根据各掌门的武艺排名来划分江湖地位。当前各门派掌门的实际武力值如下          衡山-60   武当-80  峨眉-70  华山-75 少林-90 昆仑-85 蜀山-100  上一届英雄大会的江湖地位从低到高 依次为  华山，峨眉，昆仑，武当，衡山，蜀山，少林  顾本次安排座位也是按上次江湖地位来安排的，少林上届地位">
-<meta name="twitter:image" content="https://tanggao1314.github.io/2019/09/23/英雄大会之华山论剑到冒泡排序/1569225273941.png">
+<meta name="twitter:title" content="Redis高可用集群搭建最佳实践--踩坑血泪史">
+<meta name="twitter:description" content="文件准备1234redis-3.0.6.tar.gz  redis-3.3.0.gem  ruby-2.3.0.tar.gz  zlib-1.2.11.tar.gz  安装redis前置工作在~/soft/下解压文件 1tar -zxvf redis-3.0.6.tar.gz  移动到~/ 1mv  redis-3.0.6  ../  安装进入redis-3.0.6 目录,进行安装  PREFIX">
+<meta name="twitter:image" content="https://tanggao1314.github.io/2019/09/26/Redis高可用集群搭建最佳实践--踩坑血泪史/1569576145101.png">
 
 
 <link rel="icon" href="/img/avatar.jpg">
@@ -167,7 +129,7 @@
 
 
 <ul>
-    <li><div class="all active">全部文章<small>(2)</small></div></li>
+    <li><div class="all active">全部文章<small>(3)</small></div></li>
     
 </ul>
 <div class="left-bottom">
@@ -179,8 +141,8 @@
     </div>
     <div><a class="about  hasFriend  site_url"  href="/about">关于</a><a style="width: 50%"  class="friends">友链</a></div>
 </div>
-<input type="hidden" id="yelog_site_posts_number" value="2">
-<input type="hidden" id="yelog_site_word_count" value="2.9k">
+<input type="hidden" id="yelog_site_posts_number" value="3">
+<input type="hidden" id="yelog_site_word_count" value="4.5k">
 <div style="display: none">
     <span id="busuanzi_value_site_uv"></span>
     <span id="busuanzi_value_site_pv"></span>
@@ -225,6 +187,14 @@
            data-author="" >
             <span class="post-title" title="理清Java日志体系">理清Java日志体系</span>
             <span class="post-date" title="2019-09-19 19:55:53">2019/09/19</span>
+        </a>
+        
+        <a  class=""
+           href="/2019/09/26/Redis高可用集群搭建最佳实践--踩坑血泪史/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="Redis高可用集群搭建最佳实践--踩坑血泪史">Redis高可用集群搭建最佳实践--踩坑血泪史</span>
+            <span class="post-date" title="2019-09-26 09:20:58">2019/09/26</span>
         </a>
         
         <a  class=""
