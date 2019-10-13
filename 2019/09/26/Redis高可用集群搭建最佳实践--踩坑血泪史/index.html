@@ -3,7 +3,7 @@
 <head><meta name="generator" content="Hexo 3.9.0">
   <meta charset="utf-8">
   <title>Redis高可用集群搭建最佳实践--踩坑血泪史 | 汤小高的个人博客</title>
-  <meta name="keywords" content>
+  <meta name="keywords" content=" redis ">
   <meta name="description" content="Redis高可用集群搭建最佳实践--踩坑血泪史 | 汤小高的个人博客">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 <meta property="og:type" content="website">
@@ -190,6 +190,22 @@
         <a href="javascript:" class="color5">选择排序</a>
     </li>
     
+    <li class="article-tag-list-item">
+        <a href="javascript:" class="color5">插入排序</a>
+    </li>
+    
+    <li class="article-tag-list-item">
+        <a href="javascript:" class="color1">redis</a>
+    </li>
+    
+    <li class="article-tag-list-item">
+        <a href="javascript:" class="color4">log</a>
+    </li>
+    
+    <li class="article-tag-list-item">
+        <a href="javascript:" class="color5">冒泡排序</a>
+    </li>
+    
     <div class="clearfix"></div>
 </div>
 
@@ -221,19 +237,27 @@
         </a>
         
         <a  class=""
+           href="/2019/10/13/快速排序/"
+           data-tag="快速排序"
+           data-author="" >
+            <span class="post-title" title="快速排序">快速排序</span>
+            <span class="post-date" title="2019-10-13 16:49:53">2019/10/13</span>
+        </a>
+        
+        <a  class=""
            href="/2019/10/13/插入排序/"
-           data-tag=""
+           data-tag="插入排序"
            data-author="" >
             <span class="post-title" title="插入排序">插入排序</span>
             <span class="post-date" title="2019-10-13 16:49:29">2019/10/13</span>
         </a>
         
         <a  class=""
-           href="/2019/10/13/快速排序/"
-           data-tag="快速排序"
+           href="/2019/09/19/理清Java日志体系/"
+           data-tag="log"
            data-author="" >
-            <span class="post-title" title="快速排序">快速排序</span>
-            <span class="post-date" title="2019-10-13 16:49:53">2019/10/13</span>
+            <span class="post-title" title="理清Java日志体系">理清Java日志体系</span>
+            <span class="post-date" title="2019-09-19 19:55:53">2019/09/19</span>
         </a>
         
         <a  class=""
@@ -245,16 +269,8 @@
         </a>
         
         <a  class=""
-           href="/2019/09/19/理清Java日志体系/"
-           data-tag=""
-           data-author="" >
-            <span class="post-title" title="理清Java日志体系">理清Java日志体系</span>
-            <span class="post-date" title="2019-09-19 19:55:53">2019/09/19</span>
-        </a>
-        
-        <a  class=""
            href="/2019/09/26/Redis高可用集群搭建最佳实践--踩坑血泪史/"
-           data-tag=""
+           data-tag="redis"
            data-author="" >
             <span class="post-title" title="Redis高可用集群搭建最佳实践--踩坑血泪史">Redis高可用集群搭建最佳实践--踩坑血泪史</span>
             <span class="post-date" title="2019-09-26 09:20:58">2019/09/26</span>
@@ -262,7 +278,7 @@
         
         <a  class=""
            href="/2019/09/23/英雄大会之华山论剑到冒泡排序/"
-           data-tag=""
+           data-tag="冒泡排序"
            data-author="" >
             <span class="post-title" title="英雄大会之华山论剑到冒泡排序">英雄大会之华山论剑到冒泡排序</span>
             <span class="post-date" title="2019-09-23 15:36:20">2019/09/23</span>
@@ -289,10 +305,16 @@
         
         
         
+        <span class="tag">
+            
+            <a href="javascript:" class="color1">redis</a>
+            
+        </span>
+        
     </div>
     <div class="article-meta">
         
-        创建时间:<time class="date" title='更新时间: 2019-09-27 17:39:26'>2019-09-26 09:20</time>
+        创建时间:<time class="date" title='更新时间: 2019-10-13 17:35:26'>2019-09-26 09:20</time>
         
     </div>
     <div class="article-meta">
@@ -327,7 +349,7 @@
     
     <div class="toc-ref">
     
-        <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#文件准备"><span class="toc-text">文件准备</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#安装redis"><span class="toc-text">安装redis</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#前置工作"><span class="toc-text">前置工作</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#安装"><span class="toc-text">安装</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#创建集群目录"><span class="toc-text">创建集群目录</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#安装ruby"><span class="toc-text">安装ruby</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#前置工作-1"><span class="toc-text">前置工作</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#安装-1"><span class="toc-text">安装</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#安装redis-3-3-0-gem"><span class="toc-text">安装redis-3.3.0.gem</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#安装zlib"><span class="toc-text">安装zlib</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#前置工作-2"><span class="toc-text">前置工作</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#安装-2"><span class="toc-text">安装</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#ruby条件zlib依赖"><span class="toc-text">ruby条件zlib依赖</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#启动redis集群"><span class="toc-text">启动redis集群</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#先启动所有redis节点服务"><span class="toc-text">先启动所有redis节点服务</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#创建集群"><span class="toc-text">创建集群</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#查看集群信息"><span class="toc-text">查看集群信息</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#查看具体集群节点信息"><span class="toc-text">查看具体集群节点信息</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#调整主从节点复制从属关系"><span class="toc-text">调整主从节点复制从属关系</span></a></li></ol></li></ol>
+        <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#文件准备"><span class="toc-text">文件准备</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#安装redis"><span class="toc-text">安装redis</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#前置工作"><span class="toc-text">前置工作</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#安装"><span class="toc-text">安装</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#创建集群目录"><span class="toc-text">创建集群目录</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#安装ruby"><span class="toc-text">安装ruby</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#前置工作-1"><span class="toc-text">前置工作</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#安装-1"><span class="toc-text">安装</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#安装redis-3-3-0-gem"><span class="toc-text">安装redis-3.3.0.gem</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#安装zlib"><span class="toc-text">安装zlib</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#前置工作-2"><span class="toc-text">前置工作</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#安装-2"><span class="toc-text">安装</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#ruby添加zlib依赖"><span class="toc-text">ruby添加zlib依赖</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#启动redis集群"><span class="toc-text">启动redis集群</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#先启动所有redis节点服务"><span class="toc-text">先启动所有redis节点服务</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#创建集群"><span class="toc-text">创建集群</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#查看集群信息"><span class="toc-text">查看集群信息</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#查看具体集群节点信息"><span class="toc-text">查看具体集群节点信息</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#调整主从节点复制从属关系"><span class="toc-text">调整主从节点复制从属关系</span></a></li></ol></li></ol>
     
 <style>
     .left-col .switch-btn,
@@ -370,7 +392,7 @@
 <p>编辑7101/conf下的redis.conf</p>
 <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#</span>redis节点端口</span><br><span class="line">port 7101</span><br><span class="line"><span class="meta">#</span>本主机地址 </span><br><span class="line">bind 主机ip</span><br><span class="line"><span class="meta">#</span>日志文件</span><br><span class="line">logfile "~/redis_cluster/7101/log/redis-log-7101.log"</span><br><span class="line"><span class="meta">#</span>备份数据文件</span><br><span class="line">dbfilename dump-7101.rdb</span><br><span class="line"><span class="meta">#</span>备份数据文件生成目录</span><br><span class="line">dir ~/redis_cluster/7101/data</span><br><span class="line"><span class="meta">#</span>设置为集群模式</span><br><span class="line">cluster-enabled yes</span><br><span class="line"><span class="meta">#</span>设置为后台进程</span><br><span class="line">daemonize yes</span><br><span class="line">masterauth passwd123 </span><br><span class="line">requirepass passwd123</span><br></pre></td></tr></table></figure>
 
-<p>以此修改7102-7106/conf/下的redis.conf  只需修改如下信息</p>
+<p>依次修改7102-7106/conf/下的redis.conf  只需修改如下信息</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">#redis节点端口</span><br><span class="line">port 7102</span><br><span class="line">#本主机地址 </span><br><span class="line">bind 主机ip</span><br><span class="line">#日志文件</span><br><span class="line">logfile &quot;~/redis_cluster/7101/log/redis-log-7102.log&quot;</span><br><span class="line">#备份数据文件</span><br><span class="line">dbfilename dump-7102.rdb</span><br><span class="line">#备份数据文件生成目录</span><br><span class="line">dir ~/redis_cluster/7102/data</span><br></pre></td></tr></table></figure>
 
 <p>为了方便维护，在~/redis_cluster/bin下新增 start_all.sh 启动所有redis服务</p>
@@ -407,7 +429,7 @@
 <h3 id="安装-2"><a href="#安装-2" class="headerlink" title="安装"></a>安装</h3><p>进入~/zlib-1.2.11目录， –prefix指定安装路径</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">./configure    --prefix=~/ruby/zlib</span><br><span class="line">make</span><br><span class="line">make install</span><br></pre></td></tr></table></figure>
 
-<h2 id="ruby条件zlib依赖"><a href="#ruby条件zlib依赖" class="headerlink" title="ruby条件zlib依赖"></a>ruby条件zlib依赖</h2><p>给ruby添加zlib依赖，进入~/ruby/bin目录，执行如下命令 ，其中-with-zlib-dir 指定zlib安装目录</p>
+<h2 id="ruby添加zlib依赖"><a href="#ruby添加zlib依赖" class="headerlink" title="ruby添加zlib依赖"></a>ruby添加zlib依赖</h2><p>给ruby添加zlib依赖，进入~/ruby/bin目录，执行如下命令 ，其中-with-zlib-dir 指定zlib安装目录</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">~/ruby/bin/ruby extconf.rb --with-zlib-dir=~/ruby/zlib</span><br><span class="line">make</span><br><span class="line">make install</span><br></pre></td></tr></table></figure>
 
 <h2 id="启动redis集群"><a href="#启动redis集群" class="headerlink" title="启动redis集群"></a>启动redis集群</h2><h3 id="先启动所有redis节点服务"><a href="#先启动所有redis节点服务" class="headerlink" title="先启动所有redis节点服务"></a>先启动所有redis节点服务</h3><p>进入~/redis_cluster/bin 目录,执行start_all.sh</p>
@@ -460,7 +482,7 @@
     <p><span class="copy-title">文章字数:</span><span class="post-count">1.6k</span></p>
     <p><span class="copy-title">本文作者:</span><a href="javascript:void(0)" title="汤高">汤高</a></p>
     <p><span class="copy-title">发布时间:</span>2019-09-26, 09:20:58</p>
-    <p><span class="copy-title">最后更新:</span>2019-09-27, 17:39:26</p>
+    <p><span class="copy-title">最后更新:</span>2019-10-13, 17:35:26</p>
     <span class="copy-title">原始链接:</span><a class="post-url" href="/2019/09/26/Redis高可用集群搭建最佳实践--踩坑血泪史/" title="Redis高可用集群搭建最佳实践--踩坑血泪史">https://tanggao1314.github.io/2019/09/26/Redis高可用集群搭建最佳实践--踩坑血泪史/</a>
     <p>
         <span class="copy-title">版权声明:</span><i class="fa fa-creative-commons"></i> <a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/4.0/" title="CC BY-NC-SA 4.0 International" target = "_blank">"署名-非商用-相同方式共享 4.0"</a> 转载请保留原文链接及作者。
@@ -543,7 +565,7 @@
     /*作者、标签的自动补全*/
     $(function () {
         $('.search').AutoComplete({
-            'data': ['#基数排序','#希尔排序','#归并排序','#快速排序','#选择排序',],
+            'data': ['#基数排序','#希尔排序','#归并排序','#快速排序','#选择排序','#插入排序','#redis','#log','#冒泡排序',],
             'itemHeight': 20,
             'width': 418
         }).AutoComplete('show');

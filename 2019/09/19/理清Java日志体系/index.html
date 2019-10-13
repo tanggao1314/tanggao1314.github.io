@@ -3,7 +3,7 @@
 <head><meta name="generator" content="Hexo 3.9.0">
   <meta charset="utf-8">
   <title>理清Java日志体系 | 汤小高的个人博客</title>
-  <meta name="keywords" content>
+  <meta name="keywords" content=" log ">
   <meta name="description" content="理清Java日志体系 | 汤小高的个人博客">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 <meta property="og:type" content="website">
@@ -190,6 +190,22 @@
         <a href="javascript:" class="color5">选择排序</a>
     </li>
     
+    <li class="article-tag-list-item">
+        <a href="javascript:" class="color5">插入排序</a>
+    </li>
+    
+    <li class="article-tag-list-item">
+        <a href="javascript:" class="color1">redis</a>
+    </li>
+    
+    <li class="article-tag-list-item">
+        <a href="javascript:" class="color4">log</a>
+    </li>
+    
+    <li class="article-tag-list-item">
+        <a href="javascript:" class="color5">冒泡排序</a>
+    </li>
+    
     <div class="clearfix"></div>
 </div>
 
@@ -221,19 +237,27 @@
         </a>
         
         <a  class=""
+           href="/2019/10/13/快速排序/"
+           data-tag="快速排序"
+           data-author="" >
+            <span class="post-title" title="快速排序">快速排序</span>
+            <span class="post-date" title="2019-10-13 16:49:53">2019/10/13</span>
+        </a>
+        
+        <a  class=""
            href="/2019/10/13/插入排序/"
-           data-tag=""
+           data-tag="插入排序"
            data-author="" >
             <span class="post-title" title="插入排序">插入排序</span>
             <span class="post-date" title="2019-10-13 16:49:29">2019/10/13</span>
         </a>
         
         <a  class=""
-           href="/2019/10/13/快速排序/"
-           data-tag="快速排序"
+           href="/2019/09/19/理清Java日志体系/"
+           data-tag="log"
            data-author="" >
-            <span class="post-title" title="快速排序">快速排序</span>
-            <span class="post-date" title="2019-10-13 16:49:53">2019/10/13</span>
+            <span class="post-title" title="理清Java日志体系">理清Java日志体系</span>
+            <span class="post-date" title="2019-09-19 19:55:53">2019/09/19</span>
         </a>
         
         <a  class=""
@@ -245,16 +269,8 @@
         </a>
         
         <a  class=""
-           href="/2019/09/19/理清Java日志体系/"
-           data-tag=""
-           data-author="" >
-            <span class="post-title" title="理清Java日志体系">理清Java日志体系</span>
-            <span class="post-date" title="2019-09-19 19:55:53">2019/09/19</span>
-        </a>
-        
-        <a  class=""
            href="/2019/09/26/Redis高可用集群搭建最佳实践--踩坑血泪史/"
-           data-tag=""
+           data-tag="redis"
            data-author="" >
             <span class="post-title" title="Redis高可用集群搭建最佳实践--踩坑血泪史">Redis高可用集群搭建最佳实践--踩坑血泪史</span>
             <span class="post-date" title="2019-09-26 09:20:58">2019/09/26</span>
@@ -262,7 +278,7 @@
         
         <a  class=""
            href="/2019/09/23/英雄大会之华山论剑到冒泡排序/"
-           data-tag=""
+           data-tag="冒泡排序"
            data-author="" >
             <span class="post-title" title="英雄大会之华山论剑到冒泡排序">英雄大会之华山论剑到冒泡排序</span>
             <span class="post-date" title="2019-09-23 15:36:20">2019/09/23</span>
@@ -289,10 +305,16 @@
         
         
         
+        <span class="tag">
+            
+            <a href="javascript:" class="color4">log</a>
+            
+        </span>
+        
     </div>
     <div class="article-meta">
         
-        创建时间:<time class="date" title='更新时间: 2019-09-19 20:02:04'>2019-09-19 19:55</time>
+        创建时间:<time class="date" title='更新时间: 2019-10-13 17:08:09'>2019-09-19 19:55</time>
         
     </div>
     <div class="article-meta">
@@ -400,7 +422,7 @@
     <p><span class="copy-title">文章字数:</span><span class="post-count">965</span></p>
     <p><span class="copy-title">本文作者:</span><a href="javascript:void(0)" title="汤高">汤高</a></p>
     <p><span class="copy-title">发布时间:</span>2019-09-19, 19:55:53</p>
-    <p><span class="copy-title">最后更新:</span>2019-09-19, 20:02:04</p>
+    <p><span class="copy-title">最后更新:</span>2019-10-13, 17:08:09</p>
     <span class="copy-title">原始链接:</span><a class="post-url" href="/2019/09/19/理清Java日志体系/" title="理清Java日志体系">https://tanggao1314.github.io/2019/09/19/理清Java日志体系/</a>
     <p>
         <span class="copy-title">版权声明:</span><i class="fa fa-creative-commons"></i> <a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/4.0/" title="CC BY-NC-SA 4.0 International" target = "_blank">"署名-非商用-相同方式共享 4.0"</a> 转载请保留原文链接及作者。
@@ -483,7 +505,7 @@
     /*作者、标签的自动补全*/
     $(function () {
         $('.search').AutoComplete({
-            'data': ['#基数排序','#希尔排序','#归并排序','#快速排序','#选择排序',],
+            'data': ['#基数排序','#希尔排序','#归并排序','#快速排序','#选择排序','#插入排序','#redis','#log','#冒泡排序',],
             'itemHeight': 20,
             'width': 418
         }).AutoComplete('show');
