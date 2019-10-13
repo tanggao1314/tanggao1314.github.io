@@ -2,9 +2,9 @@
 <html>
 <head><meta name="generator" content="Hexo 3.9.0">
   <meta charset="utf-8">
-  <title>理清Java日志体系 | 汤小高的个人博客</title>
-  <meta name="keywords" content>
-  <meta name="description" content="理清Java日志体系 | 汤小高的个人博客">
+  <title>基数排序 | 汤小高的个人博客</title>
+  <meta name="keywords" content=" 基数排序 ">
+  <meta name="description" content="基数排序 | 汤小高的个人博客">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 <meta property="og:type" content="website">
 <meta property="og:title" content="tags">
@@ -280,24 +280,30 @@
 </aside>
 <div class="post">
     <div class="pjax">
-        <article id="post-理清Java日志体系" class="article article-type-post" itemscope itemprop="blogPost">
+        <article id="post-基数排序" class="article article-type-post" itemscope itemprop="blogPost">
     
-        <h1 class="article-title">理清Java日志体系</h1>
+        <h1 class="article-title">基数排序</h1>
     
     <div class="article-meta">
         
         
         
+        
+        <span class="tag">
+            
+            <a href="javascript:" class="color5">基数排序</a>
+            
+        </span>
         
     </div>
     <div class="article-meta">
         
-        创建时间:<time class="date" title='更新时间: 2019-09-19 20:02:04'>2019-09-19 19:55</time>
+        创建时间:<time class="date" title='更新时间: 2019-10-13 16:55:03'>2019-10-13 16:50</time>
         
     </div>
     <div class="article-meta">
         
-        <span>字数:965</span>
+        <span>字数:178</span>
         
         
         <span id="busuanzi_container_page_pv">
@@ -327,7 +333,7 @@
     
     <div class="toc-ref">
     
-        <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#日志体系历史"><span class="toc-text">日志体系历史</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#日志体系组成"><span class="toc-text">日志体系组成</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#各部分调用关系"><span class="toc-text">各部分调用关系</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#日志框架"><span class="toc-text">日志框架</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#日志门面"><span class="toc-text">日志门面</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#绑定器"><span class="toc-text">绑定器</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#桥接器"><span class="toc-text">桥接器</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#总结"><span class="toc-text">总结</span></a></li></ol>
+        <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#基数排序"><span class="toc-text">基数排序</span></a></li></ol>
     
 <style>
     .left-col .switch-btn,
@@ -342,47 +348,8 @@
 </div>
     <div class="article-entry" itemprop="articleBody">
       
-        <p>​    一次偶然的机会，在一个项目工程中发现很多日志jar包，期初以为都要加入classpath，结果发现jar冲突，弄了好久才解决问题，为了知其所以然，系统的学习了一下Java日志体系，才发现原来简单的log.info() 当中水这么深，果然是有人的地方就有江湖，技术框架也不例外。</p>
-<h2 id="日志体系历史"><a href="#日志体系历史" class="headerlink" title="日志体系历史"></a>日志体系历史</h2><p>道听途说了一段历史，据说是造成了日志体系混乱的原因</p>
-<ol>
-<li><code>log4j</code>（作者Ceki Gülcü）出来时就等到了广泛的应用（注意这里是直接使用），是Java日志事实上的标准，并成为了Apache的项目</li>
-<li>Apache要求把log4j并入到JDK，SUN拒绝，并在jdk1.4版本后增加了<code>JUL</code>（<code>java.util.logging</code>）</li>
-<li>毕竟是JDK自带的，JUL也有很多人用。同时还有其他日志组件，如SimpleLog等。这时如果有人想换成其他日志组件，如log4j换成JUL，因为api完全不同，就需要改动代码。</li>
-<li>Apache见此，开发了<code>JCL</code>（Jakarta Commons Logging），即<code>commons-logging-xx.jar</code>。它只提供一套通用的日志接口api，并不提供日志的实现。很好的设计原则嘛，依赖抽象而非实现。这样应用程序可以在运行时选择自己想要的日志实现组件。</li>
-<li>这样看上去也挺美好的，但是log4j的作者觉得JCL不好用，自己开发出<code>slf4j</code>，它跟JCL类似，本身不替供日志具体实现，只对外提供接口或门面。目的就是为了替代JCL。同时，还开发出<code>logback</code>，一个比log4j拥有更高性能的组件，目的是为了替代log4j。</li>
-<li>Apache参考了logback,并做了一系列优化，推出了<code>log4j2</code></li>
-</ol>
-<h2 id="日志体系组成"><a href="#日志体系组成" class="headerlink" title="日志体系组成"></a>日志体系组成</h2><p><img src="/2019/09/19/理清Java日志体系/1568788072871.png" alt="日志体系组成"></p>
-<p>​    </p>
-<h2 id="各部分调用关系"><a href="#各部分调用关系" class="headerlink" title="各部分调用关系"></a>各部分调用关系</h2><p>画了一张图，下图说明了各个组织之前的调用关系</p>
-<p><img src="/2019/09/19/理清Java日志体系/1568792194404.png" alt="调用关系"></p>
-<p>举个小例子，比如客户端用slf4j做门面，用log4j2做日志实现的案例</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> org.slf4j.Logger;</span><br><span class="line"><span class="keyword">import</span> org.slf4j.LoggerFactory;</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> java.io.IOException;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Test1</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> <span class="keyword">throws</span> IOException </span>&#123;</span><br><span class="line"></span><br><span class="line">        Logger logger = LoggerFactory.getLogger(<span class="string">"chapters.introduction.HelloWorld1"</span>);</span><br><span class="line">        logger.info(<span class="string">"Hello world."</span>);</span><br><span class="line">        logger.debug(<span class="string">"Hello world."</span>);</span><br><span class="line">        logger.error(<span class="string">"Hello world."</span>);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+        <h1 id="基数排序"><a href="#基数排序" class="headerlink" title="基数排序"></a>基数排序</h1><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">int</span> arr[] =&#123;<span class="number">12</span>,<span class="number">1</span>,<span class="number">123</span>,<span class="number">117</span>,<span class="number">60</span>,<span class="number">100</span>,<span class="number">90</span>&#125;;</span><br><span class="line">    RadixSort(arr);</span><br><span class="line">    System.out.println(Arrays.toString(arr));</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">int</span> [] RadixSort(<span class="keyword">int</span> arr[]) &#123;</span><br><span class="line"></span><br><span class="line">    <span class="comment">//获取最大数的位数</span></span><br><span class="line">    Integer max = arr[<span class="number">0</span>];</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; arr.length; i++) &#123;</span><br><span class="line">        <span class="keyword">if</span> (arr[i] &gt; max) &#123;</span><br><span class="line">            max = arr[i];</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">int</span> maxLength = String.valueOf(max).length();</span><br><span class="line">    <span class="comment">//获取个位数十位数 ...</span></span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>, n = <span class="number">1</span>; i &lt; maxLength; i++, n = n * <span class="number">10</span>) &#123;</span><br><span class="line">        <span class="keyword">int</span>[][] bucket = <span class="keyword">new</span> <span class="keyword">int</span>[<span class="number">10</span>][arr.length];</span><br><span class="line">        <span class="keyword">int</span>[] count = <span class="keyword">new</span> <span class="keyword">int</span>[<span class="number">10</span>];</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> j = <span class="number">0</span>; j &lt; arr.length; j++) &#123;</span><br><span class="line">            <span class="keyword">int</span> num = arr[j] / n % <span class="number">10</span>;</span><br><span class="line">            bucket[num][count[num]] = arr[j] ;</span><br><span class="line">            count[num]++;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">int</span> index = <span class="number">0</span>;</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> k = <span class="number">0</span>; k &lt; bucket.length; k++) &#123;</span><br><span class="line">            <span class="keyword">if</span> (count[k] &gt; <span class="number">0</span>) &#123;</span><br><span class="line">                <span class="keyword">for</span> (<span class="keyword">int</span> c = <span class="number">0</span>; c &lt; count[k]; c++) &#123;</span><br><span class="line">                    arr[index] = bucket[k][c];</span><br><span class="line">                    index++;</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> arr;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
-<p>这段代码调用必须需要三个组成部分，slf4j日志门面，slf4j到log4j2的日志绑定器以及具体的log4j2日志框架</p>
-<blockquote>
-<p><strong>slf4j日志门面：slf4j-api-1.7.5.jar</strong></p>
-<p><strong>slf4j到log4j2的日志绑定器：log4j-slf4j-impl-2.1.jar</strong></p>
-<p><strong>具体的log4j2日志框架：log4j-core-2.1.jar、log4j-api-2.1.jar</strong></p>
-</blockquote>
-<h3 id="日志框架"><a href="#日志框架" class="headerlink" title="日志框架"></a>日志框架</h3><p>​    具体的日志实现，包括log4j,log4j2,jul,locback,其他</p>
-<h3 id="日志门面"><a href="#日志门面" class="headerlink" title="日志门面"></a>日志门面</h3><p>​    提供统一的日志调用接口，面向抽象编程，客户端直接调用门面接口获取日志类,jcl(commons-logging)、slf4j(Simple Logging Facade for JAVA)</p>
-<h3 id="绑定器"><a href="#绑定器" class="headerlink" title="绑定器"></a>绑定器</h3><p> 客户端调用日志门面接口API获取日志类，需要日志门面返回实际的日志实现类，而日志门面本身不提供日志实现，需要绑定到具体的日志框架，绑定后返回对应日志框架的日志实现类。</p>
-<p><img src="https://www.slf4j.org/images/concrete-bindings.png" alt="绑定关系图"> </p>
-<p>下表是具体的绑定实现方案</p>
-<p><img src="/2019/09/19/理清Java日志体系/1568715529262.png" alt="绑定方案"></p>
-<h3 id="桥接器"><a href="#桥接器" class="headerlink" title="桥接器"></a>桥接器</h3><p>​    为了让SLF4J承接不同的日志框架（日志框架转化为SLF4J），因而产生了桥接器,可以实现让当前项目中采用的其他日志框架转换为SLF4J</p>
-<p><img src="http://ifeve.com/wp-content/uploads/2016/04/legacy.png" alt="桥接图"> </p>
-<p>下表是具体的桥接实现方案</p>
-<p><img src="/2019/09/19/理清Java日志体系/1568789540216.png" alt="桥接方案1"></p>
-<p>同时SLF4j也可以转换回其他日志框架,具体桥接方案如下表</p>
-<p><img src="/2019/09/19/理清Java日志体系/1568789652326.png" alt="桥接方案2"></p>
-<h2 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h2><p>网上找的一张图，很好的反映了日志体系中日志门面-日志绑定器-日志框架实现-日志桥接器的关系图：</p>
-<p><img src="https://pic2.zhimg.com/80/v2-57092397ff9d7a69d359856ef19e769d_hd.jpg" alt="总结"> </p>
-<p>留个小目标，后续如果有时间还将学习一下log4j2和slf4j源码</p>
-<p>参考资料：</p>
-<p><a href="https://www.slf4j.org/manual.html" target="_blank" rel="noopener">SLF4J官网</a></p>
-<p><a href="https://zhuanlan.zhihu.com/p/24272450" target="_blank" rel="noopener">Java 日志框架解析(上) - 历史演进</a></p>
 
       
        <hr><span style="font-style: italic;color: gray;"> 转载请注明来源，欢迎对文章中的引用来源进行考证，欢迎指出任何有错误或不够清晰的表达。可以在下面评论区评论，也可以邮件至 451261884@qq.com </span>
@@ -396,12 +363,12 @@
 
 
 <div class="article_copyright">
-    <p><span class="copy-title">文章标题:</span>理清Java日志体系</p>
-    <p><span class="copy-title">文章字数:</span><span class="post-count">965</span></p>
+    <p><span class="copy-title">文章标题:</span>基数排序</p>
+    <p><span class="copy-title">文章字数:</span><span class="post-count">178</span></p>
     <p><span class="copy-title">本文作者:</span><a href="javascript:void(0)" title="汤高">汤高</a></p>
-    <p><span class="copy-title">发布时间:</span>2019-09-19, 19:55:53</p>
-    <p><span class="copy-title">最后更新:</span>2019-09-19, 20:02:04</p>
-    <span class="copy-title">原始链接:</span><a class="post-url" href="/2019/09/19/理清Java日志体系/" title="理清Java日志体系">https://tanggao1314.github.io/2019/09/19/理清Java日志体系/</a>
+    <p><span class="copy-title">发布时间:</span>2019-10-13, 16:50:01</p>
+    <p><span class="copy-title">最后更新:</span>2019-10-13, 16:55:03</p>
+    <span class="copy-title">原始链接:</span><a class="post-url" href="/2019/10/13/基数排序/" title="基数排序">https://tanggao1314.github.io/2019/10/13/基数排序/</a>
     <p>
         <span class="copy-title">版权声明:</span><i class="fa fa-creative-commons"></i> <a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/4.0/" title="CC BY-NC-SA 4.0 International" target = "_blank">"署名-非商用-相同方式共享 4.0"</a> 转载请保留原文链接及作者。
     </p>
