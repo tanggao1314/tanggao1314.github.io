@@ -1,0 +1,844 @@
+<!DOCTYPE html>
+<html>
+<head><meta name="generator" content="Hexo 3.9.0">
+  <meta charset="utf-8">
+  <title>WebService学习系列之基础理论知识 | 汤小高的个人博客</title>
+  <meta name="keywords" content=" webservice ">
+  <meta name="description" content="WebService学习系列之基础理论知识 | 汤小高的个人博客">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+<meta property="og:type" content="website">
+<meta property="og:title" content="categories">
+<meta property="og:url" content="https://tanggao1314.github.io/categories/index.html">
+<meta property="og:site_name" content="汤小高的个人博客">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:updated_time" content="2019-10-13T07:25:21.237Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="categories">
+
+
+<link rel="icon" href="/img/avatar.jpg">
+
+<link href="/css/style.css?v=1.0.1" rel="stylesheet">
+
+<link href="/css/hl_theme/github.css?v=1.0.1" rel="stylesheet">
+
+<link href="//cdn.bootcss.com/animate.css/3.5.2/animate.min.css" rel="stylesheet">
+<link href="//cdn.bootcss.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
+
+<script src="//cdn.bootcss.com/jquery/2.2.4/jquery.min.js"></script>
+<script src="/js/jquery.autocomplete.min.js?v=1.0.1"></script>
+
+<script src="//cdn.bootcss.com/highlight.js/9.12.0/highlight.min.js"></script>
+<script>
+    hljs.initHighlightingOnLoad();
+</script>
+
+<script src="//cdn.bootcss.com/nprogress/0.2.0/nprogress.min.js"></script>
+
+
+
+<script src="//cdn.bootcss.com/jquery-cookie/1.4.1/jquery.cookie.min.js"></script>
+
+<script src="/js/iconfont.js?v=1.0.1"></script>
+
+</head>
+<div style="display: none">
+  <input class="theme_disqus_on" value="false">
+  <input class="theme_preload_comment" value="true">
+  <input class="theme_blog_path" value>
+</div>
+
+<body>
+<aside class="nav">
+    <div class="nav-left">
+        <a href="/" class="avatar_target">
+    <img class="avatar" src="/img/avatar.jpg" />
+</a>
+<div class="author">
+    <span>汤高</span>
+</div>
+
+<div class="icon">
+    
+        
+    
+        
+        <a title="github" href="https://tanggao1314.github.io/" target="_blank">
+            
+                <svg class="iconfont-svg" aria-hidden="true">
+                    <use xlink:href="#icon-github"></use>
+                </svg>
+            
+        </a>
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+        <a title="jianshu" href="https://www.jianshu.com/u/9573d9fa6546" target="_blank">
+            
+                <svg class="iconfont-svg" aria-hidden="true">
+                    <use xlink:href="#icon-jianshu"></use>
+                </svg>
+            
+        </a>
+        
+    
+        
+    
+        
+        <a title="csdn" href="http://blog.csdn.net/tanggao1314" target="_blank">
+            
+                <svg class="iconfont-svg" aria-hidden="true">
+                    <use xlink:href="#icon-csdn"></use>
+                </svg>
+            
+        </a>
+        
+    
+        
+    
+        
+    
+        
+        <a title="email" href="mailto:451261884@qq.com" target="_blank">
+            
+                <svg class="iconfont-svg" aria-hidden="true">
+                    <use xlink:href="#icon-email"></use>
+                </svg>
+            
+        </a>
+        
+    
+        
+        <a title="qq" href="http://wpa.qq.com/msgrd?v=3&uin=451261884&site=qq&menu=yes" target="_blank">
+            
+                <svg class="iconfont-svg" aria-hidden="true">
+                    <use xlink:href="#icon-qq"></use>
+                </svg>
+            
+        </a>
+        
+    
+        
+    
+        
+    
+</div>
+
+
+
+
+<ul>
+    <li><div class="all active">全部文章<small>(12)</small></div></li>
+    
+        
+            
+            <li><div data-rel="排序">排序<small>(7)</small></div>
+                
+            </li>
+            
+        
+    
+        
+            
+            <li><div data-rel="Java日志">Java日志<small>(1)</small></div>
+                
+            </li>
+            
+        
+    
+        
+            
+            <li><div data-rel="redis学习">redis学习<small>(1)</small></div>
+                
+            </li>
+            
+        
+    
+        
+            
+            <li><div data-rel="webservice">webservice<small>(3)</small></div>
+                
+            </li>
+            
+        
+    
+</ul>
+<div class="left-bottom">
+    <div class="menus">
+    
+    
+    
+    
+    </div>
+    <div><a class="about  hasFriend  site_url"  href="/about">关于</a><a style="width: 50%"  class="friends">友链</a></div>
+</div>
+<input type="hidden" id="yelog_site_posts_number" value="12">
+<input type="hidden" id="yelog_site_word_count" value="12.3k">
+<div style="display: none">
+    <span id="busuanzi_value_site_uv"></span>
+    <span id="busuanzi_value_site_pv"></span>
+</div>
+
+    </div>
+    <div class="nav-right">
+        <div class="friends-area">
+    <div class="friends-title">
+        友情链接
+        <i class="back-title-list"></i>
+    </div>
+    <div class="friends-content">
+        <ul>
+            
+            <li><a target="_blank" href="https://tanggao1314.github.io/">汤高</a></li>
+            
+        </ul>
+    </div>
+</div>
+        <div class="title-list">
+    <form onkeydown="if(event.keyCode==13){return false;}">
+        <input class="search" type="text" placeholder="Search..." autocomplete="off"id="local-search-input" >
+        <i class="cross"></i>
+        <span>
+            <label for="tagswitch">Tags:</label>
+            <input id="tagswitch" type="checkbox" style="display: none" />
+            <i id="tagsWitchIcon"></i>
+        </span>
+    </form>
+    <div class="tags-list">
+    
+    <li class="article-tag-list-item">
+        <a href="javascript:" class="color5">基数排序</a>
+    </li>
+    
+    <li class="article-tag-list-item">
+        <a href="javascript:" class="color5">希尔排序</a>
+    </li>
+    
+    <li class="article-tag-list-item">
+        <a href="javascript:" class="color5">归并排序</a>
+    </li>
+    
+    <li class="article-tag-list-item">
+        <a href="javascript:" class="color5">插入排序</a>
+    </li>
+    
+    <li class="article-tag-list-item">
+        <a href="javascript:" class="color5">快速排序</a>
+    </li>
+    
+    <li class="article-tag-list-item">
+        <a href="javascript:" class="color4">log</a>
+    </li>
+    
+    <li class="article-tag-list-item">
+        <a href="javascript:" class="color5">选择排序</a>
+    </li>
+    
+    <li class="article-tag-list-item">
+        <a href="javascript:" class="color1">redis</a>
+    </li>
+    
+    <li class="article-tag-list-item">
+        <a href="javascript:" class="color1">webservice</a>
+    </li>
+    
+    <li class="article-tag-list-item">
+        <a href="javascript:" class="color5">冒泡排序</a>
+    </li>
+    
+    <div class="clearfix"></div>
+</div>
+
+    
+    <nav id="title-list-nav">
+        
+        <a  class="排序 "
+           href="/2019/10/13/基数排序/"
+           data-tag="基数排序"
+           data-author="" >
+            <span class="post-title" title="基数排序">基数排序</span>
+            <span class="post-date" title="2019-10-13 16:50:01">2019/10/13</span>
+        </a>
+        
+        <a  class="排序 "
+           href="/2019/10/13/希尔排序/"
+           data-tag="希尔排序"
+           data-author="" >
+            <span class="post-title" title="希尔排序">希尔排序</span>
+            <span class="post-date" title="2019-10-13 16:49:36">2019/10/13</span>
+        </a>
+        
+        <a  class="排序 "
+           href="/2019/10/13/归并排序/"
+           data-tag="归并排序"
+           data-author="" >
+            <span class="post-title" title="归并排序">归并排序</span>
+            <span class="post-date" title="2019-10-13 16:49:46">2019/10/13</span>
+        </a>
+        
+        <a  class="排序 "
+           href="/2019/10/13/插入排序/"
+           data-tag="插入排序"
+           data-author="" >
+            <span class="post-title" title="插入排序">插入排序</span>
+            <span class="post-date" title="2019-10-13 16:49:29">2019/10/13</span>
+        </a>
+        
+        <a  class="排序 "
+           href="/2019/10/13/快速排序/"
+           data-tag="快速排序"
+           data-author="" >
+            <span class="post-title" title="快速排序">快速排序</span>
+            <span class="post-date" title="2019-10-13 16:49:53">2019/10/13</span>
+        </a>
+        
+        <a  class="Java日志 "
+           href="/2019/09/19/理清Java日志体系/"
+           data-tag="log"
+           data-author="" >
+            <span class="post-title" title="理清Java日志体系">理清Java日志体系</span>
+            <span class="post-date" title="2019-09-19 19:55:53">2019/09/19</span>
+        </a>
+        
+        <a  class="排序 "
+           href="/2019/10/13/选择排序/"
+           data-tag="选择排序"
+           data-author="" >
+            <span class="post-title" title="选择排序">选择排序</span>
+            <span class="post-date" title="2019-10-13 16:48:17">2019/10/13</span>
+        </a>
+        
+        <a  class="redis学习 "
+           href="/2019/09/26/Redis高可用集群搭建最佳实践--踩坑血泪史/"
+           data-tag="redis"
+           data-author="" >
+            <span class="post-title" title="Redis高可用集群搭建最佳实践--踩坑血泪史">Redis高可用集群搭建最佳实践--踩坑血泪史</span>
+            <span class="post-date" title="2019-09-26 09:20:58">2019/09/26</span>
+        </a>
+        
+        <a  class="webservice "
+           href="/2019/11/02/WebService学习系列之JDK开发WebService/"
+           data-tag="webservice"
+           data-author="" >
+            <span class="post-title" title="WebService学习系列之JDK开发WebService">WebService学习系列之JDK开发WebService</span>
+            <span class="post-date" title="2019-11-02 21:55:05">2019/11/02</span>
+        </a>
+        
+        <a  class="排序 "
+           href="/2019/09/23/英雄大会之华山论剑到冒泡排序/"
+           data-tag="冒泡排序"
+           data-author="" >
+            <span class="post-title" title="英雄大会之华山论剑到冒泡排序">英雄大会之华山论剑到冒泡排序</span>
+            <span class="post-date" title="2019-09-23 15:36:20">2019/09/23</span>
+        </a>
+        
+        <a  class="webservice "
+           href="/2019/11/02/WebService学习系列之基础理论知识/"
+           data-tag="webservice"
+           data-author="" >
+            <span class="post-title" title="WebService学习系列之基础理论知识">WebService学习系列之基础理论知识</span>
+            <span class="post-date" title="2019-11-02 21:51:54">2019/11/02</span>
+        </a>
+        
+        <a  class="webservice "
+           href="/2019/11/02/WebService学习系列之CXF开发WebService/"
+           data-tag="webservice"
+           data-author="" >
+            <span class="post-title" title="WebService学习系列之CXF开发WebService">WebService学习系列之CXF开发WebService</span>
+            <span class="post-date" title="2019-11-02 21:55:42">2019/11/02</span>
+        </a>
+        
+    </nav>
+</div>
+    </div>
+    <div class="hide-list">
+        <div class="semicircle">
+            <div class="brackets first"><</div>
+            <div class="brackets">&gt;</div>
+        </div>
+    </div>
+</aside>
+<div class="post">
+    <div class="pjax">
+        <article id="post-WebService学习系列之基础理论知识" class="article article-type-post" itemscope itemprop="blogPost">
+    
+        <h1 class="article-title">WebService学习系列之基础理论知识</h1>
+    
+    <div class="article-meta">
+        
+        
+        
+        <span class="book">
+            
+                <a href="javascript:" data-rel="webservice">webservice</a>
+            
+        </span>
+        
+        
+        <span class="tag">
+            
+            <a href="javascript:" class="color1">webservice</a>
+            
+        </span>
+        
+    </div>
+    <div class="article-meta">
+        
+        创建时间:<time class="date" title='更新时间: 2019-11-02 22:18:31'>2019-11-02 21:51</time>
+        
+    </div>
+    <div class="article-meta">
+        
+        <span>字数:2.4k</span>
+        
+        
+        <span id="busuanzi_container_page_pv">
+            阅读:<span id="busuanzi_value_page_pv">
+                <span class="count-comment">
+                    <span class="spinner">
+                      <div class="cube1"></div>
+                      <div class="cube2"></div>
+                    </span>
+                </span>
+            </span>
+        </span>
+        
+        
+        <span class="top-comment" title="跳转至评论区">
+            <a href="#comments">
+                评论:<span class="count-comment">
+                    <span class="spinner">
+                      <div class="cube1"></div>
+                      <div class="cube2"></div>
+                    </span>
+                </span>
+            </a>
+        </span>
+        
+    </div>
+    
+    <div class="toc-ref">
+    
+        <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#WebService学习系列之基础理论知识"><span class="toc-text">WebService学习系列之基础理论知识</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#是什么"><span class="toc-text">是什么</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#应用场景"><span class="toc-text">应用场景</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#标准规范"><span class="toc-text">标准规范</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-JAX-WS（JAX-RPC）"><span class="toc-text">1.JAX-WS（JAX-RPC）</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#JAX-WS的三要素-WSDL、SOUP、UUDI"><span class="toc-text">JAX-WS的三要素:WSDL、SOUP、UUDI</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#WSDL——本质是服务内容的标准化描述，是一种接口API文档"><span class="toc-text">WSDL——本质是服务内容的标准化描述，是一种接口API文档</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#SOAP——本质是标准的传输协议"><span class="toc-text">SOAP——本质是标准的传输协议</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#UUDI——本质是服务的公共网址。"><span class="toc-text">UUDI——本质是服务的公共网址。</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-JAX-RS"><span class="toc-text">2.JAX-RS</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-JAXM-amp-SAAJ（已废弃"><span class="toc-text">3.JAXM&amp;SAAJ（已废弃)</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#分类"><span class="toc-text">分类</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#落地实现框架"><span class="toc-text">落地实现框架</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#JWS——最简单、方便"><span class="toc-text">JWS——最简单、方便</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#CXF——最流行"><span class="toc-text">CXF——最流行</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#AXIS2——重量级，需要很多jar包"><span class="toc-text">AXIS2——重量级，需要很多jar包</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#AXIS——已落伍，被AXIS1取代"><span class="toc-text">AXIS——已落伍，被AXIS1取代</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Xfire——已落伍，被CXF整合取代"><span class="toc-text">Xfire——已落伍，被CXF整合取代</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#怎么玩"><span class="toc-text">怎么玩</span></a></li></ol></li></ol>
+    
+<style>
+    .left-col .switch-btn,
+    .left-col .switch-area {
+        display: none;
+    }
+    .toc-level-3 i,
+    .toc-level-3 ol {
+        display: none !important;
+    }
+</style>
+</div>
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="WebService学习系列之基础理论知识"><a href="#WebService学习系列之基础理论知识" class="headerlink" title="WebService学习系列之基础理论知识"></a>WebService学习系列之基础理论知识</h1><p><img src="/2019/11/02/WebService学习系列之基础理论知识/10157465-075092e2d19352c5.webp" alt></p>
+<p><strong>本系列文章将介绍WebService是什么、 WebService的应用场景、WebService的标准规范、WebService的分类、WebService的落地实现框架、WebService怎么玩</strong></p>
+<h2 id="是什么"><a href="#是什么" class="headerlink" title="是什么"></a>是什么</h2><p><img src="/2019/11/02/WebService学习系列之基础理论知识/10157465-d69f6ab0552d0c58.webp" alt></p>
+<p>webservice就是web服务，其本质是远程调用技术的一套标准或规范</p>
+<h2 id="应用场景"><a href="#应用场景" class="headerlink" title="应用场景"></a>应用场景</h2><p><img src="/2019/11/02/WebService学习系列之基础理论知识/3.webp" alt></p>
+<p>webservice应用于需要进行远程过程调用的场景中，比如获取天气预报的服务等</p>
+<p><strong>调用过程</strong><br>1.服务端暴露服务<br>2.客户端调用服务端提供的服务</p>
+<p><strong>交互细节</strong><br>1.服务器首先用一套标准的方法向外界描述它所提供的服务的内容，就属于JAX-WS规范中的WSDL;<br>2.客户端需要以一种标准的协议来调用此服务，这属于JAX-WS规范中的SOAP;<br>3.服务提供者将服务内容放在一个公共的网址让大家查询，就属于JAX-WS规范中 的UDDI.(可以没有).</p>
+<h2 id="标准规范"><a href="#标准规范" class="headerlink" title="标准规范"></a>标准规范</h2><p><img src="/2019/11/02/WebService学习系列之基础理论知识/4.webp" alt></p>
+<p>WebService是一套标准规范，它制定了webservice开发的套路，只有按照这套标准玩才能开发webservice。有过三种标准，分别是JAX-WS、JAX-RS、JAXM&amp;SAAJ，下面是各种规范的概念性东西，非常枯燥，但是也需要了解一下。</p>
+<h3 id="1-JAX-WS（JAX-RPC）"><a href="#1-JAX-WS（JAX-RPC）" class="headerlink" title="1.JAX-WS（JAX-RPC）"></a>1.JAX-WS（JAX-RPC）</h3><p>JAX-WS 的全称为Java API for XML-Based Webservices ，早期的基于SOAP 的JAVA 的Web 服务规范JAX-RPC(Java API For XML-Remote Procedure Call)目前已经被JAX-WS 规范取代。从java5开始支持JAX-WS2.0版本，Jdk1.6.0_13以后的版本支持2.1版本，jdk1.7支持2.2版本。</p>
+<h4 id="JAX-WS的三要素-WSDL、SOUP、UUDI"><a href="#JAX-WS的三要素-WSDL、SOUP、UUDI" class="headerlink" title="JAX-WS的三要素:WSDL、SOUP、UUDI"></a><strong>JAX-WS的三要素:WSDL、SOUP、UUDI</strong></h4><ul>
+<li><h4 id="WSDL——本质是服务内容的标准化描述，是一种接口API文档"><a href="#WSDL——本质是服务内容的标准化描述，是一种接口API文档" class="headerlink" title="WSDL——本质是服务内容的标准化描述，是一种接口API文档"></a>WSDL——本质是服务内容的标准化描述，是一种接口API文档</h4></li>
+</ul>
+<p>WSDL的全称是web service Description Language,是一种基于XML格式的关于web服务的描述语言。</p>
+<p><strong>WSDL作用</strong>:web service提供者发布自己web服务的API文档，通过这个文档使用者可以知道接口服务的访问路径、服务方法、接口参数及参数的类型、服务返回值及值的类型等等。</p>
+<p><strong>WSDL获取</strong>: WSDL文件保存在Web服务器上，通过一个url地址就可以访问到它。客户端要调用一个WebService服务之前，要知道该服务的WSDL文件的地址。WebService服务提供商可以通过两种方式来暴露它的WSDL文件地址：<br>1.注册到UDDI服务器，以便被人查找；<br>2.直接告诉给客户端调用者。</p>
+<ul>
+<li><h4 id="SOAP——本质是标准的传输协议"><a href="#SOAP——本质是标准的传输协议" class="headerlink" title="SOAP——本质是标准的传输协议"></a>SOAP——本质是标准的传输协议</h4></li>
+</ul>
+<p>SOAP是web service的标准通信协议，SOAP为simple object access protocoll的缩写，简单对象访问协议. 它是一种标准化的传输消息的XML消息格式。WebService通过HTTP协议发送请求和接收结果时，发送的请求内容和结果内容都采用XML格式封装，并增加了一些特定的HTTP消息头，以说明HTTP消息的内容格式，这些特定的HTTP消息头和XML内容格式就是SOAP协议。SOAP提供了标准的RPC(Remote Procedure Call Protocol——远程过程调用协议)方法来调用Web Service。Soap协议是基于http的应用层协议，soap协议传输是xml数据。所以<strong>SOAP协议 = HTTP协议 + XML数据格式。</strong></p>
+<ul>
+<li><h4 id="UUDI——本质是服务的公共网址。"><a href="#UUDI——本质是服务的公共网址。" class="headerlink" title="UUDI——本质是服务的公共网址。"></a>UUDI——本质是服务的公共网址。</h4></li>
+</ul>
+<p>将web service进行UDDI注册发布,UDDI是一种创建注册表服务的规范,以便大家将自己的web service进行注册发布供使用者查找.然而当服务提供者想将自己的web service向全世界公布，以便外部找到其服务时，那么服务提供者可以将自己的web service注册到相应的UDDI商用注册网站。<br>因为WSDL文件中已经给定了web service的地址URI，外部可以直接通过WSDL提供的URI进行相应的web service调用。所以UDDI并不是一个必需的web service组件，服务方完全可以不进行UDDI的注册。</p>
+<h3 id="2-JAX-RS"><a href="#2-JAX-RS" class="headerlink" title="2.JAX-RS"></a>2.JAX-RS</h3><p>JAX-RS 是JAVA 针对REST(Representation State Transfer)风格制定的一套Web 服务规范，由于推出的较晚，该规范（JSR 311，目前JAX-RS 的版本为1.0）并未随JDK1.6 一起发行。<br>jax-RS可以发布 rest风格webservice，因为rest的webservice不采用soap传输，直接采用http传输，可以返回xml或json，比较轻量。听说以后会流行这种规范，不过我现在还暂时在实际项目中没有应用到，暂时没有学习该系列知识。</p>
+<h3 id="3-JAXM-amp-SAAJ（已废弃"><a href="#3-JAXM-amp-SAAJ（已废弃" class="headerlink" title="3.JAXM&amp;SAAJ（已废弃)"></a>3.JAXM&amp;SAAJ（已废弃)</h3><p>JAXM（JAVA API For XML Message）主要定义了包含了发送和接收消息所需的API，SAAJ（SOAP With Attachment APIFor Java，JSR 67）是与JAXM 搭配使用的API，为构建SOAP 包和解析SOAP 包提供了重要的支持，支持附件传输等，JAXM&amp;SAAJ 与JAX-WS 都是基于SOAP 的Web 服务，相比之下JAXM&amp;SAAJ 暴漏了SOAP更多的底层细节，编码比较麻烦，而JAX-WS 更加抽象，隐藏了更多的细节，更加面向对象，实现起来你基本上不需要关心SOAP 的任何细节）</p>
+<h2 id="分类"><a href="#分类" class="headerlink" title="分类"></a>分类</h2><p><img src="/2019/11/02/WebService学习系列之基础理论知识/5.webp" alt></p>
+<p>根据其规范的不同，产生了不同风格的webservice</p>
+<p><strong>1、SOAP WebService</strong>，采用JAX-WS规范。一般如果不特殊说明，平时我们听说的Webservice就是指的SOAP WebService，后面讨论的也都是这种。<br><strong>2、RESTful WebService</strong>，采用 JAX-RS规范。听说以后会流行这种。后面补讨论这种。</p>
+<h2 id="落地实现框架"><a href="#落地实现框架" class="headerlink" title="落地实现框架"></a>落地实现框架</h2><p>天上飞的理论，必须要有落地的实现，webservice指定了一套标准规范，就必须要有一套实现了它规范的实现，落地实现框架有如下几种</p>
+<p><img src="/2019/11/02/WebService学习系列之基础理论知识/6.webp" alt></p>
+<p>cxf和axis2最为常用，Axis与XFire已随着技术不断的更替慢慢落幕，而目前也只有axis2和cxf官方有更新，Axis与XFire都已不再更新。</p>
+<p>那些落伍的框架本人认为只需要知道有这么回事就行，毕竟就怕有些姥姥级别的项目里面还有用这些框架开发webservice服务端的，如果这些落后的框架支持一些被废弃的webservice规范，如果用其他流行框架根据wsdl生成客户端代码时，有可能不支持，本人就遇到过用JAX-RPC这种被废弃的规范开发的webservice服务端的，我根据它生成的wsdl文件，用cxf去生成webservice客户端代码时失败了。但是用AXIS2框架提供的工具可以生成，我估计是AXIS2框架还是支持JAX-RPC这种被废弃的规范。</p>
+<ul>
+<li><h3 id="JWS——最简单、方便"><a href="#JWS——最简单、方便" class="headerlink" title="JWS——最简单、方便"></a>JWS——最简单、方便</h3></li>
+</ul>
+<p>这是Java6发布所提供的对Web Service服务的一种实现。它开发最简单，最方便，不过实际项目中用得并不多，个人估计是功能没有CXF和AXIS2全，性能也没有他们高。</p>
+<ul>
+<li><h3 id="CXF——最流行"><a href="#CXF——最流行" class="headerlink" title="CXF——最流行"></a>CXF——最流行</h3></li>
+</ul>
+<p>最流行的框架。CXF是Apache旗下一个重磅的SOA简易框架，它实现了ESB（企业服务总线）。CXF来自于XFire项目，经过改造后形成的，就像目前的Struts2来自WebWork一样。可以看出XFire的命运会和WebWork的命运一样，最终会淡出人们的视线。CXF不但是一个优秀的Web Services / SOAP / WSDL 引擎，也是一个不错的ESB总线，为SOA的实施提供了一种选择方案，当然他不是最好的，它仅仅实现了SOA架构的一部分。<br>注：对于Axis2与CXF之间的关系，一个是Axis2出现的时间较早，而CXF的追赶速度快。</p>
+<ul>
+<li><h3 id="AXIS2——重量级，需要很多jar包"><a href="#AXIS2——重量级，需要很多jar包" class="headerlink" title="AXIS2——重量级，需要很多jar包"></a>AXIS2——重量级，需要很多jar包</h3></li>
+</ul>
+<p>Axis2是Apache下的一个重量级WebService框架，准确说它是一个Web Services / SOAP / WSDL 的引擎，是WebService框架的集大成者，它能不但能制作和发布WebService，而且可以生成Java和其他语言版WebService客户端和服务端代码。这是它的优势所在。但是，这也不可避免的导致了Axis2的复杂性，使用过的开发者都知道，它所依赖的包数量和大小都是很惊人的。</p>
+<ul>
+<li><h3 id="AXIS——已落伍，被AXIS1取代"><a href="#AXIS——已落伍，被AXIS1取代" class="headerlink" title="AXIS——已落伍，被AXIS1取代"></a>AXIS——已落伍，被AXIS1取代</h3></li>
+</ul>
+<p>AXIS2的早期产品，被AXIS2升级取代</p>
+<ul>
+<li><h3 id="Xfire——已落伍，被CXF整合取代"><a href="#Xfire——已落伍，被CXF整合取代" class="headerlink" title="Xfire——已落伍，被CXF整合取代"></a>Xfire——已落伍，被CXF整合取代</h3></li>
+</ul>
+<p>XFire是一个高性能的WebService框架，在Java6之前，它的知名度甚至超过了Apache的Axis2，XFire的优点是开发方便，与现有的Web整合很好，可以融为一体，并且开发也很方便。但是对Java之外的语言，没有提供相关的代码工具。XFire后来被Apache收购了，原因是它太优秀了，收购后，被整合到CXF中去了。</p>
+<h2 id="怎么玩"><a href="#怎么玩" class="headerlink" title="怎么玩"></a>怎么玩</h2><p>既然有这么多落地的实现框架，那么就可以用这些框架来进行WebService开发。利用这些Webservice开发框架来进行开发非常简单。</p>
+<p><strong>1.如果我们是开发客户端</strong><br>那么我们可以直接通过服务端发布的wsdl文件直接生成客户端代码，都不用自己开发代码。</p>
+<p><strong>2.如果我们是开发服务端</strong></p>
+<ul>
+<li>可以先按Webservice框架的API进行开发后，发布webservice服务，最后生成wsdl文件；</li>
+<li>也可以先提前制定wsdl文件，然后通过wsdl文件生成服务端代码发布webservice服务，这种方式服务端不需要自己开发代码，不过手动编写wsdl文件不是那么简单，但是有工具可以利用wsdl Editor,就是那种傻瓜式的图形化拖拽软件。制定好接口规范后，可以用wsdl Editor来编辑生成对应接口规范的wsdl文件。</li>
+</ul>
+<p>下面几篇文章中我将介绍如何使用jdk，CXF框架来开发webservice</p>
+<p><img src="/2019/11/02/WebService学习系列之基础理论知识/7.webp" alt></p>
+<p>​                                        </p>
+
+      
+       <hr><span style="font-style: italic;color: gray;"> 转载请注明来源，欢迎对文章中的引用来源进行考证，欢迎指出任何有错误或不够清晰的表达。可以在下面评论区评论，也可以邮件至 451261884@qq.com </span>
+    </div>
+</article>
+
+
+<p>
+    <a href="javascript:void(0)" class="dashang" onclick="dashangToggle()">赏</a>
+</p>
+
+
+<div class="article_copyright">
+    <p><span class="copy-title">文章标题:</span>WebService学习系列之基础理论知识</p>
+    <p><span class="copy-title">文章字数:</span><span class="post-count">2.4k</span></p>
+    <p><span class="copy-title">本文作者:</span><a href="javascript:void(0)" title="汤高">汤高</a></p>
+    <p><span class="copy-title">发布时间:</span>2019-11-02, 21:51:54</p>
+    <p><span class="copy-title">最后更新:</span>2019-11-02, 22:18:31</p>
+    <span class="copy-title">原始链接:</span><a class="post-url" href="/2019/11/02/WebService学习系列之基础理论知识/" title="WebService学习系列之基础理论知识">https://tanggao1314.github.io/2019/11/02/WebService学习系列之基础理论知识/</a>
+    <p>
+        <span class="copy-title">版权声明:</span><i class="fa fa-creative-commons"></i> <a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/4.0/" title="CC BY-NC-SA 4.0 International" target = "_blank">"署名-非商用-相同方式共享 4.0"</a> 转载请保留原文链接及作者。
+    </p>
+</div>
+
+
+
+    <div id="comments"></div>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.css">
+
+<script type="text/javascript">
+    $.getScript('/js/gitalk.js', function () {
+        var gitalk = new Gitalk({
+            clientID: '7aa9b46cd8adc21eaa14',
+            clientSecret: 'c3639c38104fa7c2e388806c6451efc1e328468a',
+            repo: 'hexo_comment',
+            owner: 'tanggao1314',
+            admin: ['tanggao1314'],
+            id: decodeURI(location.pathname),
+            distractionFreeMode: 'true',
+            language: 'zh-CN',
+            perPage: parseInt('10',10)
+        })
+        gitalk.render('comments')
+    })
+</script>
+
+
+
+
+    
+
+
+
+
+    </div>
+    <div class="copyright">
+        <p class="footer-entry">©2016-2019 tanggao</p>
+<p class="footer-entry">Built with <a href="https://hexo.io/" target="_blank">Hexo</a> and <a href="https://tanggao1314.github.io/" target="_blank">作者</a> author</p>
+
+    </div>
+    <div class="full-toc">
+        <button class="full"><span class="min "></span></button>
+<button class="post-toc-menu"><span class="post-toc-menu-icons"></span></button>
+<div class="post-toc"><span class="post-toc-title">目录</span>
+    <div class="post-toc-content">
+
+    </div>
+</div>
+<a class="" id="rocket" href="javascript:void(0)"></a>
+    </div>
+</div>
+<div class="acParent"></div>
+
+<div class="hide_box" onclick="dashangToggle()"></div>
+<div class="shang_box">
+    <a class="shang_close" href="javascript:void(0)" onclick="dashangToggle()">×</a>
+    <div class="shang_tit">
+        <p>喜欢就点赞,疼爱就打赏</p>
+    </div>
+    <div class="shang_payimg">
+        <div class="pay_img">
+            <img src="/img/alipay.jpg" class="alipay" title="扫码支持">
+            <img src="/img/weixin.jpg" class="weixin" title="扫码支持">
+        </div>
+    </div>
+    <div class="shang_payselect">
+        <span><label><input type="radio" name="pay" checked value="alipay">支付宝</label></span><span><label><input type="radio" name="pay" value="weixin">微信</label></span>
+    </div>
+</div>
+
+
+</body>
+<script src="/js/jquery.pjax.js?v=1.0.1" ></script>
+
+<script src="/js/script.js?v=1.0.1" ></script>
+<script>
+    var img_resize = 'default';
+    /*作者、标签的自动补全*/
+    $(function () {
+        $('.search').AutoComplete({
+            'data': ['#基数排序','#希尔排序','#归并排序','#插入排序','#快速排序','#log','#选择排序','#redis','#webservice','#冒泡排序',],
+            'itemHeight': 20,
+            'width': 418
+        }).AutoComplete('show');
+    })
+    function initArticle() {
+        /*渲染对应的表格样式*/
+        
+            $(".post .pjax table").addClass("green_title");
+        
+
+        /*渲染打赏样式*/
+        
+        $("input[name=pay]").on("click", function () {
+            if($("input[name=pay]:checked").val()=="weixin"){
+                $(".shang_box .shang_payimg .pay_img").addClass("weixin_img");
+            } else {
+                $(".shang_box .shang_payimg .pay_img").removeClass("weixin_img");
+            }
+        })
+        
+
+        /*高亮代码块行号*/
+        
+        $('pre code').each(function(){
+            var lines = $(this).text().split('\n').length - 1, widther='';
+            if (lines>99) {
+                widther = 'widther'
+            }
+            var $numbering = $('<ul/>').addClass('pre-numbering ' + widther).attr("unselectable","on");
+            $(this).addClass('has-numbering ' + widther)
+                    .parent()
+                    .append($numbering);
+            for(var i=1;i<=lines;i++){
+                $numbering.append($('<li/>').text(i));
+            }
+        });
+        
+
+        /*访问数量*/
+        
+        $.getScript("//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js");
+        
+
+        /*代码高亮，行号对齐*/
+        $('.pre-numbering').css('line-height',$('.has-numbering').css('line-height'));
+
+        
+    }
+
+    /*打赏页面隐藏与展示*/
+    
+    function dashangToggle() {
+        $(".shang_box").fadeToggle();
+        $(".hide_box").fadeToggle();
+    }
+    
+
+</script>
+
+<!--加入行号的高亮代码块样式-->
+
+<style>
+    pre{
+        position: relative;
+        margin-bottom: 24px;
+        border-radius: 10px;
+        border: 1px solid #e2dede;
+        background: #FFF;
+        overflow: hidden;
+    }
+    code.has-numbering{
+        margin-left: 30px;
+    }
+    code.has-numbering.widther{
+        margin-left: 35px;
+    }
+    .pre-numbering{
+        margin: 0px;
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 20px;
+        padding: 0.5em 3px 0.7em 5px;
+        border-right: 1px solid #C3CCD0;
+        text-align: right;
+        color: #AAA;
+        background-color: ;
+    }
+    .pre-numbering.widther {
+        width: 35px;
+    }
+</style>
+
+<!--自定义样式设置-->
+<style>
+    
+    
+    .nav {
+        width: 542px;
+    }
+    .nav.fullscreen {
+        margin-left: -542px;
+    }
+    .nav-left {
+        width: 120px;
+    }
+    
+    
+    @media screen and (max-width: 1468px) {
+        .nav {
+            width: 492px;
+        }
+        .nav.fullscreen {
+            margin-left: -492px;
+        }
+        .nav-left {
+            width: 100px;
+        }
+    }
+    
+    
+    @media screen and (max-width: 1024px) {
+        .nav {
+            width: 492px;
+            margin-left: -492px
+        }
+        .nav.fullscreen {
+            margin-left: 0;
+        }
+        .nav .hide-list.fullscreen {
+            left: 492px
+        }
+    }
+    
+    @media screen and (max-width: 426px) {
+        .nav {
+            width: 100%;
+        }
+        .nav-left {
+            width: 100%;
+        }
+    }
+    
+    
+    .nav-right .title-list nav a .post-title, .nav-right .title-list #local-search-result a .post-title {
+        color: #383636;
+    }
+    
+    
+    .nav-right .title-list nav a .post-date, .nav-right .title-list #local-search-result a .post-date {
+        color: #5e5e5f;
+    }
+    
+    
+    .nav-right nav a.hover, #local-search-result a.hover{
+        background-color: #e2e0e0;
+    }
+    
+    
+
+    /*列表样式*/
+    
+    .post .pjax article .article-entry>ol, .post .pjax article .article-entry>ul, .post .pjax article>ol, .post .pjax article>ul{
+        border: #e2dede solid 1px;
+        border-radius: 10px;
+        padding: 10px 32px 10px 56px;
+    }
+    .post .pjax article .article-entry li>ol, .post .pjax article .article-entry li>ul,.post .pjax article li>ol, .post .pjax article li>ul{
+        padding-top: 5px;
+        padding-bottom: 5px;
+    }
+    .post .pjax article .article-entry>ol>li, .post .pjax article .article-entry>ul>li,.post .pjax article>ol>li, .post .pjax article>ul>li{
+        margin-bottom: auto;
+        margin-left: auto;
+    }
+    .post .pjax article .article-entry li>ol>li, .post .pjax article .article-entry li>ul>li,.post .pjax article li>ol>li, .post .pjax article li>ul>li{
+        margin-bottom: auto;
+        margin-left: auto;
+    }
+    
+
+    /* 背景图样式 */
+    
+    
+
+
+    /*引用块样式*/
+    
+
+    /*文章列表背景图*/
+    
+    .nav-right:before {
+        content: ' ';
+        display: block;
+        position: absolute;
+        left: 0;
+        top: 0;
+        width: 100%;
+        height: 100%;
+        opacity: 0.3;
+        background: url("https://i.loli.net/2019/07/22/5d3521411f3f169375.png");
+        background-repeat: no-repeat;
+        background-position: 50% 0;
+        -ms-background-size: cover;
+        -o-background-size: cover;
+        -moz-background-size: cover;
+        -webkit-background-size: cover;
+        background-size: cover;
+    }
+    
+
+    
+    .post .pjax article :not(pre) > code {
+        color: #24292e;
+        font-family: SFMono-Regular,Consolas,Liberation Mono,Menlo,Courier,monospace;
+        background-color: rgba(27,31,35,.05);
+        border-radius: 3px;
+        font-size: 85%;
+        margin: 0;
+        padding: .2em .4em;
+    }
+    
+</style>
+
+
+
+
+
+
+
+</html>

@@ -1,0 +1,859 @@
+<!DOCTYPE html>
+<html>
+<head><meta name="generator" content="Hexo 3.9.0">
+  <meta charset="utf-8">
+  <title>WebService学习系列之CXF开发WebService | 汤小高的个人博客</title>
+  <meta name="keywords" content=" webservice ">
+  <meta name="description" content="WebService学习系列之CXF开发WebService | 汤小高的个人博客">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+<meta property="og:type" content="website">
+<meta property="og:title" content="categories">
+<meta property="og:url" content="https://tanggao1314.github.io/categories/index.html">
+<meta property="og:site_name" content="汤小高的个人博客">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:updated_time" content="2019-10-13T07:25:21.237Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="categories">
+
+
+<link rel="icon" href="/img/avatar.jpg">
+
+<link href="/css/style.css?v=1.0.1" rel="stylesheet">
+
+<link href="/css/hl_theme/github.css?v=1.0.1" rel="stylesheet">
+
+<link href="//cdn.bootcss.com/animate.css/3.5.2/animate.min.css" rel="stylesheet">
+<link href="//cdn.bootcss.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
+
+<script src="//cdn.bootcss.com/jquery/2.2.4/jquery.min.js"></script>
+<script src="/js/jquery.autocomplete.min.js?v=1.0.1"></script>
+
+<script src="//cdn.bootcss.com/highlight.js/9.12.0/highlight.min.js"></script>
+<script>
+    hljs.initHighlightingOnLoad();
+</script>
+
+<script src="//cdn.bootcss.com/nprogress/0.2.0/nprogress.min.js"></script>
+
+
+
+<script src="//cdn.bootcss.com/jquery-cookie/1.4.1/jquery.cookie.min.js"></script>
+
+<script src="/js/iconfont.js?v=1.0.1"></script>
+
+</head>
+<div style="display: none">
+  <input class="theme_disqus_on" value="false">
+  <input class="theme_preload_comment" value="true">
+  <input class="theme_blog_path" value>
+</div>
+
+<body>
+<aside class="nav">
+    <div class="nav-left">
+        <a href="/" class="avatar_target">
+    <img class="avatar" src="/img/avatar.jpg" />
+</a>
+<div class="author">
+    <span>汤高</span>
+</div>
+
+<div class="icon">
+    
+        
+    
+        
+        <a title="github" href="https://tanggao1314.github.io/" target="_blank">
+            
+                <svg class="iconfont-svg" aria-hidden="true">
+                    <use xlink:href="#icon-github"></use>
+                </svg>
+            
+        </a>
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+        <a title="jianshu" href="https://www.jianshu.com/u/9573d9fa6546" target="_blank">
+            
+                <svg class="iconfont-svg" aria-hidden="true">
+                    <use xlink:href="#icon-jianshu"></use>
+                </svg>
+            
+        </a>
+        
+    
+        
+    
+        
+        <a title="csdn" href="http://blog.csdn.net/tanggao1314" target="_blank">
+            
+                <svg class="iconfont-svg" aria-hidden="true">
+                    <use xlink:href="#icon-csdn"></use>
+                </svg>
+            
+        </a>
+        
+    
+        
+    
+        
+    
+        
+        <a title="email" href="mailto:451261884@qq.com" target="_blank">
+            
+                <svg class="iconfont-svg" aria-hidden="true">
+                    <use xlink:href="#icon-email"></use>
+                </svg>
+            
+        </a>
+        
+    
+        
+        <a title="qq" href="http://wpa.qq.com/msgrd?v=3&uin=451261884&site=qq&menu=yes" target="_blank">
+            
+                <svg class="iconfont-svg" aria-hidden="true">
+                    <use xlink:href="#icon-qq"></use>
+                </svg>
+            
+        </a>
+        
+    
+        
+    
+        
+    
+</div>
+
+
+
+
+<ul>
+    <li><div class="all active">全部文章<small>(12)</small></div></li>
+    
+        
+            
+            <li><div data-rel="排序">排序<small>(7)</small></div>
+                
+            </li>
+            
+        
+    
+        
+            
+            <li><div data-rel="Java日志">Java日志<small>(1)</small></div>
+                
+            </li>
+            
+        
+    
+        
+            
+            <li><div data-rel="redis学习">redis学习<small>(1)</small></div>
+                
+            </li>
+            
+        
+    
+        
+            
+            <li><div data-rel="webservice">webservice<small>(3)</small></div>
+                
+            </li>
+            
+        
+    
+</ul>
+<div class="left-bottom">
+    <div class="menus">
+    
+    
+    
+    
+    </div>
+    <div><a class="about  hasFriend  site_url"  href="/about">关于</a><a style="width: 50%"  class="friends">友链</a></div>
+</div>
+<input type="hidden" id="yelog_site_posts_number" value="12">
+<input type="hidden" id="yelog_site_word_count" value="12.3k">
+<div style="display: none">
+    <span id="busuanzi_value_site_uv"></span>
+    <span id="busuanzi_value_site_pv"></span>
+</div>
+
+    </div>
+    <div class="nav-right">
+        <div class="friends-area">
+    <div class="friends-title">
+        友情链接
+        <i class="back-title-list"></i>
+    </div>
+    <div class="friends-content">
+        <ul>
+            
+            <li><a target="_blank" href="https://tanggao1314.github.io/">汤高</a></li>
+            
+        </ul>
+    </div>
+</div>
+        <div class="title-list">
+    <form onkeydown="if(event.keyCode==13){return false;}">
+        <input class="search" type="text" placeholder="Search..." autocomplete="off"id="local-search-input" >
+        <i class="cross"></i>
+        <span>
+            <label for="tagswitch">Tags:</label>
+            <input id="tagswitch" type="checkbox" style="display: none" />
+            <i id="tagsWitchIcon"></i>
+        </span>
+    </form>
+    <div class="tags-list">
+    
+    <li class="article-tag-list-item">
+        <a href="javascript:" class="color5">基数排序</a>
+    </li>
+    
+    <li class="article-tag-list-item">
+        <a href="javascript:" class="color5">希尔排序</a>
+    </li>
+    
+    <li class="article-tag-list-item">
+        <a href="javascript:" class="color5">归并排序</a>
+    </li>
+    
+    <li class="article-tag-list-item">
+        <a href="javascript:" class="color5">插入排序</a>
+    </li>
+    
+    <li class="article-tag-list-item">
+        <a href="javascript:" class="color5">快速排序</a>
+    </li>
+    
+    <li class="article-tag-list-item">
+        <a href="javascript:" class="color4">log</a>
+    </li>
+    
+    <li class="article-tag-list-item">
+        <a href="javascript:" class="color5">选择排序</a>
+    </li>
+    
+    <li class="article-tag-list-item">
+        <a href="javascript:" class="color1">redis</a>
+    </li>
+    
+    <li class="article-tag-list-item">
+        <a href="javascript:" class="color1">webservice</a>
+    </li>
+    
+    <li class="article-tag-list-item">
+        <a href="javascript:" class="color5">冒泡排序</a>
+    </li>
+    
+    <div class="clearfix"></div>
+</div>
+
+    
+    <nav id="title-list-nav">
+        
+        <a  class="排序 "
+           href="/2019/10/13/基数排序/"
+           data-tag="基数排序"
+           data-author="" >
+            <span class="post-title" title="基数排序">基数排序</span>
+            <span class="post-date" title="2019-10-13 16:50:01">2019/10/13</span>
+        </a>
+        
+        <a  class="排序 "
+           href="/2019/10/13/希尔排序/"
+           data-tag="希尔排序"
+           data-author="" >
+            <span class="post-title" title="希尔排序">希尔排序</span>
+            <span class="post-date" title="2019-10-13 16:49:36">2019/10/13</span>
+        </a>
+        
+        <a  class="排序 "
+           href="/2019/10/13/归并排序/"
+           data-tag="归并排序"
+           data-author="" >
+            <span class="post-title" title="归并排序">归并排序</span>
+            <span class="post-date" title="2019-10-13 16:49:46">2019/10/13</span>
+        </a>
+        
+        <a  class="排序 "
+           href="/2019/10/13/插入排序/"
+           data-tag="插入排序"
+           data-author="" >
+            <span class="post-title" title="插入排序">插入排序</span>
+            <span class="post-date" title="2019-10-13 16:49:29">2019/10/13</span>
+        </a>
+        
+        <a  class="排序 "
+           href="/2019/10/13/快速排序/"
+           data-tag="快速排序"
+           data-author="" >
+            <span class="post-title" title="快速排序">快速排序</span>
+            <span class="post-date" title="2019-10-13 16:49:53">2019/10/13</span>
+        </a>
+        
+        <a  class="Java日志 "
+           href="/2019/09/19/理清Java日志体系/"
+           data-tag="log"
+           data-author="" >
+            <span class="post-title" title="理清Java日志体系">理清Java日志体系</span>
+            <span class="post-date" title="2019-09-19 19:55:53">2019/09/19</span>
+        </a>
+        
+        <a  class="排序 "
+           href="/2019/10/13/选择排序/"
+           data-tag="选择排序"
+           data-author="" >
+            <span class="post-title" title="选择排序">选择排序</span>
+            <span class="post-date" title="2019-10-13 16:48:17">2019/10/13</span>
+        </a>
+        
+        <a  class="redis学习 "
+           href="/2019/09/26/Redis高可用集群搭建最佳实践--踩坑血泪史/"
+           data-tag="redis"
+           data-author="" >
+            <span class="post-title" title="Redis高可用集群搭建最佳实践--踩坑血泪史">Redis高可用集群搭建最佳实践--踩坑血泪史</span>
+            <span class="post-date" title="2019-09-26 09:20:58">2019/09/26</span>
+        </a>
+        
+        <a  class="webservice "
+           href="/2019/11/02/WebService学习系列之JDK开发WebService/"
+           data-tag="webservice"
+           data-author="" >
+            <span class="post-title" title="WebService学习系列之JDK开发WebService">WebService学习系列之JDK开发WebService</span>
+            <span class="post-date" title="2019-11-02 21:55:05">2019/11/02</span>
+        </a>
+        
+        <a  class="排序 "
+           href="/2019/09/23/英雄大会之华山论剑到冒泡排序/"
+           data-tag="冒泡排序"
+           data-author="" >
+            <span class="post-title" title="英雄大会之华山论剑到冒泡排序">英雄大会之华山论剑到冒泡排序</span>
+            <span class="post-date" title="2019-09-23 15:36:20">2019/09/23</span>
+        </a>
+        
+        <a  class="webservice "
+           href="/2019/11/02/WebService学习系列之基础理论知识/"
+           data-tag="webservice"
+           data-author="" >
+            <span class="post-title" title="WebService学习系列之基础理论知识">WebService学习系列之基础理论知识</span>
+            <span class="post-date" title="2019-11-02 21:51:54">2019/11/02</span>
+        </a>
+        
+        <a  class="webservice "
+           href="/2019/11/02/WebService学习系列之CXF开发WebService/"
+           data-tag="webservice"
+           data-author="" >
+            <span class="post-title" title="WebService学习系列之CXF开发WebService">WebService学习系列之CXF开发WebService</span>
+            <span class="post-date" title="2019-11-02 21:55:42">2019/11/02</span>
+        </a>
+        
+    </nav>
+</div>
+    </div>
+    <div class="hide-list">
+        <div class="semicircle">
+            <div class="brackets first"><</div>
+            <div class="brackets">&gt;</div>
+        </div>
+    </div>
+</aside>
+<div class="post">
+    <div class="pjax">
+        <article id="post-WebService学习系列之CXF开发WebService" class="article article-type-post" itemscope itemprop="blogPost">
+    
+        <h1 class="article-title">WebService学习系列之CXF开发WebService</h1>
+    
+    <div class="article-meta">
+        
+        
+        
+        <span class="book">
+            
+                <a href="javascript:" data-rel="webservice">webservice</a>
+            
+        </span>
+        
+        
+        <span class="tag">
+            
+            <a href="javascript:" class="color1">webservice</a>
+            
+        </span>
+        
+    </div>
+    <div class="article-meta">
+        
+        创建时间:<time class="date" title='更新时间: 2019-11-02 22:28:33'>2019-11-02 21:55</time>
+        
+    </div>
+    <div class="article-meta">
+        
+        <span>字数:3.1k</span>
+        
+        
+        <span id="busuanzi_container_page_pv">
+            阅读:<span id="busuanzi_value_page_pv">
+                <span class="count-comment">
+                    <span class="spinner">
+                      <div class="cube1"></div>
+                      <div class="cube2"></div>
+                    </span>
+                </span>
+            </span>
+        </span>
+        
+        
+        <span class="top-comment" title="跳转至评论区">
+            <a href="#comments">
+                评论:<span class="count-comment">
+                    <span class="spinner">
+                      <div class="cube1"></div>
+                      <div class="cube2"></div>
+                    </span>
+                </span>
+            </a>
+        </span>
+        
+    </div>
+    
+    <div class="toc-ref">
+    
+        <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#WebService学习系列之CXF开发WebService"><span class="toc-text">WebService学习系列之CXF开发WebService</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#手动编码服务端开发"><span class="toc-text">手动编码服务端开发</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-引入cxf相关jar"><span class="toc-text">1.引入cxf相关jar</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-新增服务接口"><span class="toc-text">2.新增服务接口</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-新增服务接口实现"><span class="toc-text">3.新增服务接口实现</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#4-新增发布服务类"><span class="toc-text">4.新增发布服务类</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#客户端开发步骤"><span class="toc-text">客户端开发步骤</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-获取wsdl文件"><span class="toc-text">1.获取wsdl文件</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-手动编写客户端静态调用代码"><span class="toc-text">2.手动编写客户端静态调用代码</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-手动编写客户端动态调用代码"><span class="toc-text">3.手动编写客户端动态调用代码</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#通过工具根据wsdl文件生成客户端调用类"><span class="toc-text">通过工具根据wsdl文件生成客户端调用类</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#通过wsdl文件生成服务端代码"><span class="toc-text">通过wsdl文件生成服务端代码</span></a></li></ol></li></ol>
+    
+<style>
+    .left-col .switch-btn,
+    .left-col .switch-area {
+        display: none;
+    }
+    .toc-level-3 i,
+    .toc-level-3 ol {
+        display: none !important;
+    }
+</style>
+</div>
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="WebService学习系列之CXF开发WebService"><a href="#WebService学习系列之CXF开发WebService" class="headerlink" title="WebService学习系列之CXF开发WebService"></a>WebService学习系列之CXF开发WebService</h1><p><img src="/2019/11/02/WebService学习系列之CXF开发WebService/1.webp" alt></p>
+<p><strong>手动编写服务端代码开发分为三步：</strong><br>    1.引入cxf相关jar包<br>    2.新增服务接口<br>    3.新增服务接口实现<br>    4.新增发布服务类</p>
+<p><strong>手动编写客户端代码开发分为两步：</strong><br>    1.获取wsdl文件<br>    2.新增客户端调用类<br>        调用方式分为两种，分别是静态调用和动态调用</p>
+<p><strong>服务端客户端全自动生成代码</strong></p>
+<ul>
+<li>通过wsdl文件生成服务端代码和客户端代码的工程中不需要引入任何cxf的jar包（真强大，axis2框架生成的代码还需要引入axis2的jar包）</li>
+</ul>
+<h2 id="手动编码服务端开发"><a href="#手动编码服务端开发" class="headerlink" title="手动编码服务端开发"></a>手动编码服务端开发</h2><h3 id="1-引入cxf相关jar"><a href="#1-引入cxf相关jar" class="headerlink" title="1.引入cxf相关jar"></a>1.引入cxf相关jar</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">&lt;dependencies&gt;</span><br><span class="line">       &lt;!--添加cxf支持  --&gt;</span><br><span class="line">       &lt;dependency&gt;</span><br><span class="line">           &lt;groupId&gt;org.apache.cxf&lt;/groupId&gt;</span><br><span class="line">           &lt;artifactId&gt;cxf-rt-frontend-jaxws&lt;/artifactId&gt;</span><br><span class="line">           &lt;version&gt;3.1.9&lt;/version&gt;</span><br><span class="line">       &lt;/dependency&gt;</span><br><span class="line">       &lt;dependency&gt;</span><br><span class="line">           &lt;groupId&gt;org.apache.cxf&lt;/groupId&gt;</span><br><span class="line">           &lt;artifactId&gt;cxf-rt-transports-http-jetty&lt;/artifactId&gt;</span><br><span class="line">           &lt;version&gt;3.1.9&lt;/version&gt;</span><br><span class="line">       &lt;/dependency&gt;</span><br><span class="line">       &lt;dependency&gt;</span><br><span class="line">           &lt;groupId&gt;org.apache.cxf&lt;/groupId&gt;</span><br><span class="line">           &lt;artifactId&gt;cxf-core&lt;/artifactId&gt;</span><br><span class="line">           &lt;version&gt;3.1.9&lt;/version&gt;</span><br><span class="line">       &lt;/dependency&gt;</span><br><span class="line">   &lt;/dependencies&gt;</span><br></pre></td></tr></table></figure>
+
+<h3 id="2-新增服务接口"><a href="#2-新增服务接口" class="headerlink" title="2.新增服务接口"></a>2.新增服务接口</h3><p>在接口上添加注解@WebService(serviceName=”MyHelloWorldService”)</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br></pre></td><td class="code"><pre><span class="line">package com.tg.cxf;</span><br><span class="line">/**</span><br><span class="line"> * &lt;p&gt;description：&lt;/p&gt;</span><br><span class="line"> *</span><br><span class="line"> * @author tanggao</span><br><span class="line"> * @date 2019/10/22 21:56</span><br><span class="line"> * @version 1.0</span><br><span class="line"> */</span><br><span class="line"></span><br><span class="line">import javax.jws.WebParam;</span><br><span class="line">import javax.jws.WebResult;</span><br><span class="line">import javax.jws.WebService;</span><br><span class="line"></span><br><span class="line">/**</span><br><span class="line"> *</span><br><span class="line"> * ......................我佛慈悲......................</span><br><span class="line"> *                       _oo0oo_</span><br><span class="line"> *                      o8888888o</span><br><span class="line"> *                      88&quot; . &quot;88</span><br><span class="line"> *                      (| -_- |)</span><br><span class="line"> *                      0\  =  /0</span><br><span class="line"> *                    ___/`---&apos;\___</span><br><span class="line"> *                  .&apos; \\|     |// &apos;.</span><br><span class="line"> *                 / \\|||  :  |||// \</span><br><span class="line"> *                / _||||| -卍-|||||- \</span><br><span class="line"> *               |   | \\\  -  /// |   |</span><br><span class="line"> *               | \_|  &apos;&apos;\---/&apos;&apos;  |_/ |</span><br><span class="line"> *               \  .-\__  &apos;-&apos;  ___/-. /</span><br><span class="line"> *             ___&apos;. .&apos;  /--.--\  `. .&apos;___</span><br><span class="line"> *          .&quot;&quot; &apos;&lt;  `.___\_&lt;|&gt;_/___.&apos; &gt;&apos; &quot;&quot;.</span><br><span class="line"> *         | | :  `- \`.;`\ _ /`;.`/ - ` : | |</span><br><span class="line"> *         \  \ `_.   \_ __\ /__ _/   .-` /  /</span><br><span class="line"> *     =====`-.____`.___ \_____/___.-`___.-&apos;=====</span><br><span class="line"> *                       `=---=&apos;</span><br><span class="line"> *</span><br><span class="line"> .....................................................</span><br><span class="line"> ......  一切有为法,如梦幻泡影,如露亦如电,应作如是观  ........        </span><br><span class="line"> .........        三界唯心,万法唯识           ...........                 </span><br><span class="line"> ............    bug即空,空即bug,永无bug   .............             </span><br><span class="line"> .....................................................</span><br><span class="line"> */</span><br><span class="line">@WebService(serviceName=&quot;MyHelloWorldService&quot;)</span><br><span class="line">public interface HelloWorldService &#123;</span><br><span class="line"></span><br><span class="line">    public @WebResult(name=&quot;returnHello&quot;)String sayHello(@WebParam(name=&quot;name&quot;)String name);</span><br><span class="line"></span><br><span class="line">    public @WebResult(name=&quot;returnPerson&quot;)Person getPerson(@WebParam(name=&quot;name&quot;)String name);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="3-新增服务接口实现"><a href="#3-新增服务接口实现" class="headerlink" title="3.新增服务接口实现"></a>3.新增服务接口实现</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br></pre></td><td class="code"><pre><span class="line">package com.tg.cxf;</span><br><span class="line">/**</span><br><span class="line"> * &lt;p&gt;description：&lt;/p&gt;</span><br><span class="line"> *</span><br><span class="line"> * @author tanggao</span><br><span class="line"> * @date 2019/10/22 21:59</span><br><span class="line"> * @version 1.0</span><br><span class="line"> */</span><br><span class="line"></span><br><span class="line">import javax.jws.WebParam;</span><br><span class="line"></span><br><span class="line">/**</span><br><span class="line"> *</span><br><span class="line"> * ......................我佛慈悲......................</span><br><span class="line"> *                       _oo0oo_</span><br><span class="line"> *                      o8888888o</span><br><span class="line"> *                      88&quot; . &quot;88</span><br><span class="line"> *                      (| -_- |)</span><br><span class="line"> *                      0\  =  /0</span><br><span class="line"> *                    ___/`---&apos;\___</span><br><span class="line"> *                  .&apos; \\|     |// &apos;.</span><br><span class="line"> *                 / \\|||  :  |||// \</span><br><span class="line"> *                / _||||| -卍-|||||- \</span><br><span class="line"> *               |   | \\\  -  /// |   |</span><br><span class="line"> *               | \_|  &apos;&apos;\---/&apos;&apos;  |_/ |</span><br><span class="line"> *               \  .-\__  &apos;-&apos;  ___/-. /</span><br><span class="line"> *             ___&apos;. .&apos;  /--.--\  `. .&apos;___</span><br><span class="line"> *          .&quot;&quot; &apos;&lt;  `.___\_&lt;|&gt;_/___.&apos; &gt;&apos; &quot;&quot;.</span><br><span class="line"> *         | | :  `- \`.;`\ _ /`;.`/ - ` : | |</span><br><span class="line"> *         \  \ `_.   \_ __\ /__ _/   .-` /  /</span><br><span class="line"> *     =====`-.____`.___ \_____/___.-`___.-&apos;=====</span><br><span class="line"> *                       `=---=&apos;</span><br><span class="line"> *</span><br><span class="line"> .....................................................</span><br><span class="line"> ......  一切有为法,如梦幻泡影,如露亦如电,应作如是观  ........        </span><br><span class="line"> .........        三界唯心,万法唯识           ...........                 </span><br><span class="line"> ............    bug即空,空即bug,永无bug   .............             </span><br><span class="line"> .....................................................</span><br><span class="line"> */</span><br><span class="line">public class HelloWorldServiceImpl implements HelloWorldService &#123;</span><br><span class="line"></span><br><span class="line">    public  String sayHello(String name) &#123;</span><br><span class="line">        return &quot;hello,&quot;+name;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    public Person getPerson(String name) &#123;</span><br><span class="line">        Person p =new Person();</span><br><span class="line">        p.setName(name);</span><br><span class="line">        p.setAge(24);</span><br><span class="line">        return p;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>实现类依赖的Person类如下：</p>
+<p><img src="/2019/11/02/WebService学习系列之CXF开发WebService/2.webp" alt></p>
+<h3 id="4-新增发布服务类"><a href="#4-新增发布服务类" class="headerlink" title="4.新增发布服务类"></a>4.新增发布服务类</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br></pre></td><td class="code"><pre><span class="line">package com.tg.cxf;</span><br><span class="line">/**</span><br><span class="line"> * &lt;p&gt;description：&lt;/p&gt;</span><br><span class="line"> *</span><br><span class="line"> * @author tanggao</span><br><span class="line"> * @date 2019/10/22 22:02</span><br><span class="line"> * @version 1.0</span><br><span class="line"> */</span><br><span class="line"></span><br><span class="line">import org.apache.cxf.jaxws.JaxWsServerFactoryBean;</span><br><span class="line"></span><br><span class="line">/**</span><br><span class="line"> *</span><br><span class="line"> * ......................我佛慈悲......................</span><br><span class="line"> *                       _oo0oo_</span><br><span class="line"> *                      o8888888o</span><br><span class="line"> *                      88&quot; . &quot;88</span><br><span class="line"> *                      (| -_- |)</span><br><span class="line"> *                      0\  =  /0</span><br><span class="line"> *                    ___/`---&apos;\___</span><br><span class="line"> *                  .&apos; \\|     |// &apos;.</span><br><span class="line"> *                 / \\|||  :  |||// \</span><br><span class="line"> *                / _||||| -卍-|||||- \</span><br><span class="line"> *               |   | \\\  -  /// |   |</span><br><span class="line"> *               | \_|  &apos;&apos;\---/&apos;&apos;  |_/ |</span><br><span class="line"> *               \  .-\__  &apos;-&apos;  ___/-. /</span><br><span class="line"> *             ___&apos;. .&apos;  /--.--\  `. .&apos;___</span><br><span class="line"> *          .&quot;&quot; &apos;&lt;  `.___\_&lt;|&gt;_/___.&apos; &gt;&apos; &quot;&quot;.</span><br><span class="line"> *         | | :  `- \`.;`\ _ /`;.`/ - ` : | |</span><br><span class="line"> *         \  \ `_.   \_ __\ /__ _/   .-` /  /</span><br><span class="line"> *     =====`-.____`.___ \_____/___.-`___.-&apos;=====</span><br><span class="line"> *                       `=---=&apos;</span><br><span class="line"> *</span><br><span class="line"> .....................................................</span><br><span class="line"> ......  一切有为法,如梦幻泡影,如露亦如电,应作如是观  ........        </span><br><span class="line"> .........        三界唯心,万法唯识           ...........                 </span><br><span class="line"> ............    bug即空,空即bug,永无bug   .............             </span><br><span class="line"> .....................................................</span><br><span class="line"> */</span><br><span class="line">public class CxfServer &#123;</span><br><span class="line"></span><br><span class="line">    public static void main(String[] args) &#123;</span><br><span class="line">        System.out.println(&quot;web Service start&quot;);</span><br><span class="line">        HelloWorldServiceImpl implementor = new HelloWorldServiceImpl();</span><br><span class="line">        String address=&quot;http://localhost/helloWorld&quot;;</span><br><span class="line">        JaxWsServerFactoryBean factoryBean = new JaxWsServerFactoryBean();</span><br><span class="line">        factoryBean.setAddress(address); //设置暴露地址</span><br><span class="line">        factoryBean.setServiceClass(HelloWorldService.class); //接口类</span><br><span class="line">        factoryBean.setServiceBean(implementor); //设置实现类</span><br><span class="line">        factoryBean.create();</span><br><span class="line">        System.out.println(&quot;web Service started&quot;);</span><br><span class="line"></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>验证服务发布是否成功，访问wsdl，wsdl路径即为发布的路径加上?wsdl</p>
+<blockquote>
+<p><a href="https://links.jianshu.com/go?to=http%3A%2F%2Flocalhost%2FhelloWorld%3Fwsdl" target="_blank" rel="noopener">http://localhost/helloWorld?wsdl</a></p>
+</blockquote>
+<p><img src="/2019/11/02/WebService学习系列之CXF开发WebService/3.webp" alt></p>
+<h2 id="客户端开发步骤"><a href="#客户端开发步骤" class="headerlink" title="客户端开发步骤"></a>客户端开发步骤</h2><h3 id="1-获取wsdl文件"><a href="#1-获取wsdl文件" class="headerlink" title="1.获取wsdl文件"></a>1.获取wsdl文件</h3><p>wsdl文件可以是实时的wsdl网址，比如：</p>
+<blockquote>
+<p><a href="https://links.jianshu.com/go?to=http%3A%2F%2Flocalhost%2FhelloWorld%3Fwsdl" target="_blank" rel="noopener">http://localhost/helloWorld?wsdl</a></p>
+</blockquote>
+<p>也可以是离线的wsdl文件</p>
+<h3 id="2-手动编写客户端静态调用代码"><a href="#2-手动编写客户端静态调用代码" class="headerlink" title="2.手动编写客户端静态调用代码"></a>2.手动编写客户端静态调用代码</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br></pre></td><td class="code"><pre><span class="line">package com.tg.cxf;</span><br><span class="line">/**</span><br><span class="line"> * &lt;p&gt;description：&lt;/p&gt;</span><br><span class="line"> *</span><br><span class="line"> * @author tanggao</span><br><span class="line"> * @date 2019/10/22 22:05</span><br><span class="line"> * @version 1.0</span><br><span class="line"> */</span><br><span class="line"></span><br><span class="line">import org.apache.cxf.interceptor.LoggingInInterceptor;</span><br><span class="line">import org.apache.cxf.jaxws.JaxWsProxyFactoryBean;</span><br><span class="line"></span><br><span class="line">/**</span><br><span class="line"> *</span><br><span class="line"> * ......................我佛慈悲......................</span><br><span class="line"> *                       _oo0oo_</span><br><span class="line"> *                      o8888888o</span><br><span class="line"> *                      88&quot; . &quot;88</span><br><span class="line"> *                      (| -_- |)</span><br><span class="line"> *                      0\  =  /0</span><br><span class="line"> *                    ___/`---&apos;\___</span><br><span class="line"> *                  .&apos; \\|     |// &apos;.</span><br><span class="line"> *                 / \\|||  :  |||// \</span><br><span class="line"> *                / _||||| -卍-|||||- \</span><br><span class="line"> *               |   | \\\  -  /// |   |</span><br><span class="line"> *               | \_|  &apos;&apos;\---/&apos;&apos;  |_/ |</span><br><span class="line"> *               \  .-\__  &apos;-&apos;  ___/-. /</span><br><span class="line"> *             ___&apos;. .&apos;  /--.--\  `. .&apos;___</span><br><span class="line"> *          .&quot;&quot; &apos;&lt;  `.___\_&lt;|&gt;_/___.&apos; &gt;&apos; &quot;&quot;.</span><br><span class="line"> *         | | :  `- \`.;`\ _ /`;.`/ - ` : | |</span><br><span class="line"> *         \  \ `_.   \_ __\ /__ _/   .-` /  /</span><br><span class="line"> *     =====`-.____`.___ \_____/___.-`___.-&apos;=====</span><br><span class="line"> *                       `=---=&apos;</span><br><span class="line"> *</span><br><span class="line"> .....................................................</span><br><span class="line"> ......  一切有为法,如梦幻泡影,如露亦如电,应作如是观  ........        </span><br><span class="line"> .........        三界唯心,万法唯识           ...........                 </span><br><span class="line"> ............    bug即空,空即bug,永无bug   .............             </span><br><span class="line"> .....................................................</span><br><span class="line"> 静态调用需要依赖service类，因为客户端调用cxf webservice接口的过程中需要服务器端提供service，很不方便，如果同一个项目中则没有区别。</span><br><span class="line"> */</span><br><span class="line">public class StaticClient &#123;</span><br><span class="line"></span><br><span class="line">    public static void main(String[] args) &#123;</span><br><span class="line">        // 创建WebService客户端代理工厂</span><br><span class="line">        JaxWsProxyFactoryBean factory = new JaxWsProxyFactoryBean();</span><br><span class="line">// 判断是否抛出异常</span><br><span class="line">        factory.getOutInterceptors().add(new LoggingInInterceptor());</span><br><span class="line">// 注册webservice接口</span><br><span class="line">        factory.setServiceClass(HelloWorldService.class);</span><br><span class="line">// 配置webservice地址</span><br><span class="line">        factory.setAddress(&quot;http://localhost/helloWorld?wsdl&quot;);</span><br><span class="line">// 获得接口对象</span><br><span class="line">        HelloWorldService service = (HelloWorldService) factory.create();</span><br><span class="line">// 调用接口方法</span><br><span class="line">        String result = service.sayHello(&quot;aaaaaaaaaa&quot;);</span><br><span class="line">        System.out.println(&quot;调用结果:&quot; + result);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p><strong>运行结果</strong></p>
+<p><img src="/2019/11/02/WebService学习系列之CXF开发WebService/4.webp" alt></p>
+<p>静态调用需要依赖service类，因为客户端调用cxf webservice接口的过程中需要服务器端提供service，很不方便，如果同一个项目中则没有区别</p>
+<h3 id="3-手动编写客户端动态调用代码"><a href="#3-手动编写客户端动态调用代码" class="headerlink" title="3.手动编写客户端动态调用代码"></a>3.手动编写客户端动态调用代码</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br></pre></td><td class="code"><pre><span class="line">package com.tg.cxf;</span><br><span class="line">/**</span><br><span class="line"> * &lt;p&gt;description：&lt;/p&gt;</span><br><span class="line"> *</span><br><span class="line"> * @author tanggao</span><br><span class="line"> * @date 2019/10/22 22:08</span><br><span class="line"> * @version 1.0</span><br><span class="line"> */</span><br><span class="line"></span><br><span class="line">import org.apache.cxf.jaxws.endpoint.dynamic.JaxWsDynamicClientFactory;</span><br><span class="line"></span><br><span class="line">import javax.xml.namespace.QName;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">public class DynamicClient &#123;</span><br><span class="line"></span><br><span class="line">    public static void main(String[] args) &#123;</span><br><span class="line">        JaxWsDynamicClientFactory dcf = JaxWsDynamicClientFactory.newInstance();</span><br><span class="line">        org.apache.cxf.endpoint.Client client = dcf</span><br><span class="line">                .createClient(&quot;http://localhost/helloWorld?wsdl&quot;);</span><br><span class="line">        // url为调用webService的wsdl地址 </span><br><span class="line"> // namespace是命名空间，methodName是方法名</span><br><span class="line">        QName name = new QName(&quot;http://cxf.tg.com/&quot;, &quot;sayHello&quot;);</span><br><span class="line">        String xmlStr = &quot;aaaaaaaa&quot;;</span><br><span class="line">        // paramvalue为参数值</span><br><span class="line">        Object[] objects;</span><br><span class="line">        try &#123;</span><br><span class="line">            objects = client.invoke(name, xmlStr);</span><br><span class="line">            System.out.println(objects[0].toString());</span><br><span class="line">        &#125; catch (Exception e) &#123;</span><br><span class="line">            e.printStackTrace();</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p><strong>运行结果</strong></p>
+<p><img src="/2019/11/02/WebService学习系列之CXF开发WebService/5.webp" alt></p>
+<p>一般都不会自己写代码，都是通过工具生成客户端代码</p>
+<h2 id="通过工具根据wsdl文件生成客户端调用类"><a href="#通过工具根据wsdl文件生成客户端调用类" class="headerlink" title="通过工具根据wsdl文件生成客户端调用类"></a>通过工具根据wsdl文件生成客户端调用类</h2><p>官网下载cxf ，下载完后如下图</p>
+<p><img src="/2019/11/02/WebService学习系列之CXF开发WebService/6.webp" alt></p>
+<p>在bin目录中有一个wsdl2java命令</p>
+<p><img src="/2019/11/02/WebService学习系列之CXF开发WebService/7.webp" alt></p>
+<p>image.png</p>
+<p><strong>注意，如果要直接使用该命令，需要将bin加入环境变量中</strong><br>准备wsdl文件，如下是本地保存的wsdl文件 C:\Users\Administrator\Desktop\daima\helloWorld.xml</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br></pre></td><td class="code"><pre><span class="line">&lt;?xml version=&apos;1.0&apos; encoding=&apos;UTF-8&apos;?&gt;&lt;wsdl:definitions xmlns:xsd=&quot;http://www.w3.org/2001/XMLSchema&quot; xmlns:wsdl=&quot;http://schemas.xmlsoap.org/wsdl/&quot; xmlns:tns=&quot;http://cxf.tg.com/&quot; xmlns:soap=&quot;http://schemas.xmlsoap.org/wsdl/soap/&quot; xmlns:ns1=&quot;http://schemas.xmlsoap.org/soap/http&quot; name=&quot;MyHelloWorldService&quot; targetNamespace=&quot;http://cxf.tg.com/&quot;&gt;</span><br><span class="line">  &lt;wsdl:types&gt;</span><br><span class="line">&lt;xs:schema xmlns:xs=&quot;http://www.w3.org/2001/XMLSchema&quot; xmlns:tns=&quot;http://cxf.tg.com/&quot; elementFormDefault=&quot;unqualified&quot; targetNamespace=&quot;http://cxf.tg.com/&quot; version=&quot;1.0&quot;&gt;</span><br><span class="line"></span><br><span class="line">  &lt;xs:element name=&quot;getPerson&quot; type=&quot;tns:getPerson&quot;/&gt;</span><br><span class="line"></span><br><span class="line">  &lt;xs:element name=&quot;getPersonResponse&quot; type=&quot;tns:getPersonResponse&quot;/&gt;</span><br><span class="line"></span><br><span class="line">  &lt;xs:element name=&quot;sayHello&quot; type=&quot;tns:sayHello&quot;/&gt;</span><br><span class="line"></span><br><span class="line">  &lt;xs:element name=&quot;sayHelloResponse&quot; type=&quot;tns:sayHelloResponse&quot;/&gt;</span><br><span class="line"></span><br><span class="line">  &lt;xs:complexType name=&quot;sayHello&quot;&gt;</span><br><span class="line">    &lt;xs:sequence&gt;</span><br><span class="line">      &lt;xs:element minOccurs=&quot;0&quot; name=&quot;name&quot; type=&quot;xs:string&quot;/&gt;</span><br><span class="line">    &lt;/xs:sequence&gt;</span><br><span class="line">  &lt;/xs:complexType&gt;</span><br><span class="line"></span><br><span class="line">  &lt;xs:complexType name=&quot;sayHelloResponse&quot;&gt;</span><br><span class="line">    &lt;xs:sequence&gt;</span><br><span class="line">      &lt;xs:element minOccurs=&quot;0&quot; name=&quot;returnHello&quot; type=&quot;xs:string&quot;/&gt;</span><br><span class="line">    &lt;/xs:sequence&gt;</span><br><span class="line">  &lt;/xs:complexType&gt;</span><br><span class="line"></span><br><span class="line">  &lt;xs:complexType name=&quot;getPerson&quot;&gt;</span><br><span class="line">    &lt;xs:sequence&gt;</span><br><span class="line">      &lt;xs:element minOccurs=&quot;0&quot; name=&quot;name&quot; type=&quot;xs:string&quot;/&gt;</span><br><span class="line">    &lt;/xs:sequence&gt;</span><br><span class="line">  &lt;/xs:complexType&gt;</span><br><span class="line"></span><br><span class="line">  &lt;xs:complexType name=&quot;getPersonResponse&quot;&gt;</span><br><span class="line">    &lt;xs:sequence&gt;</span><br><span class="line">      &lt;xs:element minOccurs=&quot;0&quot; name=&quot;returnPerson&quot; type=&quot;tns:person&quot;/&gt;</span><br><span class="line">    &lt;/xs:sequence&gt;</span><br><span class="line">  &lt;/xs:complexType&gt;</span><br><span class="line"></span><br><span class="line">  &lt;xs:complexType name=&quot;person&quot;&gt;</span><br><span class="line">    &lt;xs:sequence&gt;</span><br><span class="line">      &lt;xs:element name=&quot;age&quot; type=&quot;xs:int&quot;/&gt;</span><br><span class="line">      &lt;xs:element minOccurs=&quot;0&quot; name=&quot;name&quot; type=&quot;xs:string&quot;/&gt;</span><br><span class="line">    &lt;/xs:sequence&gt;</span><br><span class="line">  &lt;/xs:complexType&gt;</span><br><span class="line"></span><br><span class="line">&lt;/xs:schema&gt;</span><br><span class="line">  &lt;/wsdl:types&gt;</span><br><span class="line">  &lt;wsdl:message name=&quot;sayHelloResponse&quot;&gt;</span><br><span class="line">    &lt;wsdl:part element=&quot;tns:sayHelloResponse&quot; name=&quot;parameters&quot;&gt;</span><br><span class="line">    &lt;/wsdl:part&gt;</span><br><span class="line">  &lt;/wsdl:message&gt;</span><br><span class="line">  &lt;wsdl:message name=&quot;getPersonResponse&quot;&gt;</span><br><span class="line">    &lt;wsdl:part element=&quot;tns:getPersonResponse&quot; name=&quot;parameters&quot;&gt;</span><br><span class="line">    &lt;/wsdl:part&gt;</span><br><span class="line">  &lt;/wsdl:message&gt;</span><br><span class="line">  &lt;wsdl:message name=&quot;sayHello&quot;&gt;</span><br><span class="line">    &lt;wsdl:part element=&quot;tns:sayHello&quot; name=&quot;parameters&quot;&gt;</span><br><span class="line">    &lt;/wsdl:part&gt;</span><br><span class="line">  &lt;/wsdl:message&gt;</span><br><span class="line">  &lt;wsdl:message name=&quot;getPerson&quot;&gt;</span><br><span class="line">    &lt;wsdl:part element=&quot;tns:getPerson&quot; name=&quot;parameters&quot;&gt;</span><br><span class="line">    &lt;/wsdl:part&gt;</span><br><span class="line">  &lt;/wsdl:message&gt;</span><br><span class="line">  &lt;wsdl:portType name=&quot;HelloWorldService&quot;&gt;</span><br><span class="line">    &lt;wsdl:operation name=&quot;sayHello&quot;&gt;</span><br><span class="line">      &lt;wsdl:input message=&quot;tns:sayHello&quot; name=&quot;sayHello&quot;&gt;</span><br><span class="line">    &lt;/wsdl:input&gt;</span><br><span class="line">      &lt;wsdl:output message=&quot;tns:sayHelloResponse&quot; name=&quot;sayHelloResponse&quot;&gt;</span><br><span class="line">    &lt;/wsdl:output&gt;</span><br><span class="line">    &lt;/wsdl:operation&gt;</span><br><span class="line">    &lt;wsdl:operation name=&quot;getPerson&quot;&gt;</span><br><span class="line">      &lt;wsdl:input message=&quot;tns:getPerson&quot; name=&quot;getPerson&quot;&gt;</span><br><span class="line">    &lt;/wsdl:input&gt;</span><br><span class="line">      &lt;wsdl:output message=&quot;tns:getPersonResponse&quot; name=&quot;getPersonResponse&quot;&gt;</span><br><span class="line">    &lt;/wsdl:output&gt;</span><br><span class="line">    &lt;/wsdl:operation&gt;</span><br><span class="line">  &lt;/wsdl:portType&gt;</span><br><span class="line">  &lt;wsdl:binding name=&quot;MyHelloWorldServiceSoapBinding&quot; type=&quot;tns:HelloWorldService&quot;&gt;</span><br><span class="line">    &lt;soap:binding style=&quot;document&quot; transport=&quot;http://schemas.xmlsoap.org/soap/http&quot;/&gt;</span><br><span class="line">    &lt;wsdl:operation name=&quot;sayHello&quot;&gt;</span><br><span class="line">      &lt;soap:operation soapAction=&quot;&quot; style=&quot;document&quot;/&gt;</span><br><span class="line">      &lt;wsdl:input name=&quot;sayHello&quot;&gt;</span><br><span class="line">        &lt;soap:body use=&quot;literal&quot;/&gt;</span><br><span class="line">      &lt;/wsdl:input&gt;</span><br><span class="line">      &lt;wsdl:output name=&quot;sayHelloResponse&quot;&gt;</span><br><span class="line">        &lt;soap:body use=&quot;literal&quot;/&gt;</span><br><span class="line">      &lt;/wsdl:output&gt;</span><br><span class="line">    &lt;/wsdl:operation&gt;</span><br><span class="line">    &lt;wsdl:operation name=&quot;getPerson&quot;&gt;</span><br><span class="line">      &lt;soap:operation soapAction=&quot;&quot; style=&quot;document&quot;/&gt;</span><br><span class="line">      &lt;wsdl:input name=&quot;getPerson&quot;&gt;</span><br><span class="line">        &lt;soap:body use=&quot;literal&quot;/&gt;</span><br><span class="line">      &lt;/wsdl:input&gt;</span><br><span class="line">      &lt;wsdl:output name=&quot;getPersonResponse&quot;&gt;</span><br><span class="line">        &lt;soap:body use=&quot;literal&quot;/&gt;</span><br><span class="line">      &lt;/wsdl:output&gt;</span><br><span class="line">    &lt;/wsdl:operation&gt;</span><br><span class="line">  &lt;/wsdl:binding&gt;</span><br><span class="line">  &lt;wsdl:service name=&quot;MyHelloWorldService&quot;&gt;</span><br><span class="line">    &lt;wsdl:port binding=&quot;tns:MyHelloWorldServiceSoapBinding&quot; name=&quot;HelloWorldServicePort&quot;&gt;</span><br><span class="line">      &lt;soap:address location=&quot;http://localhost/helloWorld&quot;/&gt;</span><br><span class="line">    &lt;/wsdl:port&gt;</span><br><span class="line">  &lt;/wsdl:service&gt;</span><br><span class="line">&lt;/wsdl:definitions&gt;</span><br></pre></td></tr></table></figure>
+
+<p>打开cmd ,输入</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">wsdl2java -encoding utf-8 -p com.asiainfo.ws.boss -d E:\idea-yaxin\cxfclient\src -client   C:\Users\Administrator\Desktop\daima\helloWorld.xml</span><br></pre></td></tr></table></figure>
+
+<p><img src="/2019/11/02/WebService学习系列之CXF开发WebService/8.webp" alt></p>
+<p>参数</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">-encoding 指定编码集</span><br><span class="line">-p 指定其wsdl的命名空间，也就是要生成代码的包名:</span><br><span class="line">-d 指定要产生代码所在目录</span><br><span class="line">-client 生成客户端测试web service的代码</span><br></pre></td></tr></table></figure>
+
+<p>在指定工程路径下生产了客户端代码</p>
+<p><img src="/2019/11/02/WebService学习系列之CXF开发WebService/9.webp" alt></p>
+<p>因为生成代码时指定了参数 -client，所以客户端调用类HelloWorldService_HelloWorldServicePort_Client 也生成了，如下类</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br></pre></td><td class="code"><pre><span class="line">package com.cxf.client;</span><br><span class="line"></span><br><span class="line">/**</span><br><span class="line"> * Please modify this class to meet your needs</span><br><span class="line"> * This class is not complete</span><br><span class="line"> */</span><br><span class="line"></span><br><span class="line">import javax.xml.namespace.QName;</span><br><span class="line">import java.io.File;</span><br><span class="line">import java.net.MalformedURLException;</span><br><span class="line">import java.net.URL;</span><br><span class="line"></span><br><span class="line">/**</span><br><span class="line"> * This class was generated by Apache CXF 3.3.3</span><br><span class="line"> * 2019-11-02T18:14:45.976+08:00</span><br><span class="line"> * Generated source version: 3.3.3</span><br><span class="line"> *</span><br><span class="line"> */</span><br><span class="line">public final class HelloWorldService_HelloWorldServicePort_Client &#123;</span><br><span class="line"></span><br><span class="line">    private static final QName SERVICE_NAME = new QName(&quot;http://cxf.tg.com/&quot;, &quot;MyHelloWorldService&quot;);</span><br><span class="line"></span><br><span class="line">    private HelloWorldService_HelloWorldServicePort_Client() &#123;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    public static void main(String args[]) throws java.lang.Exception &#123;</span><br><span class="line">        URL wsdlURL = MyHelloWorldService.WSDL_LOCATION;</span><br><span class="line">        if (args.length &gt; 0 &amp;&amp; args[0] != null &amp;&amp; !&quot;&quot;.equals(args[0])) &#123;</span><br><span class="line">            File wsdlFile = new File(args[0]);</span><br><span class="line">            try &#123;</span><br><span class="line">                if (wsdlFile.exists()) &#123;</span><br><span class="line">                    wsdlURL = wsdlFile.toURI().toURL();</span><br><span class="line">                &#125; else &#123;</span><br><span class="line">                    wsdlURL = new URL(args[0]);</span><br><span class="line">                &#125;</span><br><span class="line">            &#125; catch (MalformedURLException e) &#123;</span><br><span class="line">                e.printStackTrace();</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        MyHelloWorldService ss = new MyHelloWorldService(wsdlURL, SERVICE_NAME);</span><br><span class="line">        HelloWorldService port = ss.getHelloWorldServicePort();</span><br><span class="line">        &#123;</span><br><span class="line">        System.out.println(&quot;Invoking sayHello...&quot;);</span><br><span class="line">        java.lang.String _sayHello_name = &quot;&quot;;</span><br><span class="line">        java.lang.String _sayHello__return = port.sayHello(_sayHello_name);</span><br><span class="line">        System.out.println(&quot;sayHello.result=&quot; + _sayHello__return);</span><br><span class="line">        &#125;</span><br><span class="line">        &#123;</span><br><span class="line">        System.out.println(&quot;Invoking getPerson...&quot;);</span><br><span class="line">        java.lang.String _getPerson_name = &quot;&quot;;</span><br><span class="line">        com.cxf.client.Person _getPerson__return = port.getPerson(_getPerson_name);</span><br><span class="line">        System.out.println(&quot;getPerson.result=&quot; + _getPerson__return);</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        System.exit(0);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>直接修改一下传入的参数，查看运行结果</p>
+<p><img src="/2019/11/02/WebService学习系列之CXF开发WebService/10.webp" alt></p>
+<h2 id="通过wsdl文件生成服务端代码"><a href="#通过wsdl文件生成服务端代码" class="headerlink" title="通过wsdl文件生成服务端代码"></a>通过wsdl文件生成服务端代码</h2><p>还可以通过已经制定好的wsdl文件生成服务端代码，<br>有两个好处：<br>1.可以通过制定好的wsdl文件，直接生成服务端代码，无需编码，节省编码时间<br>2.当我们写客户端时，如果要服务端当前不能调用，而我们又要测试客户端的业务逻辑，所有可以根据wsdl文件生成服务端，服务端直接返回成功结果给客户端调式用。</p>
+<p>生成服务端命令</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">wsdl2java -encoding utf-8 -p com.cxf.server -impl -d E:\idea-yaxin\cxfserver\src -server  C:\Users\Administrator\Desktop\daima\helloWorld.xml</span><br></pre></td></tr></table></figure>
+
+<p>参数</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">-encoding 代码编码集</span><br><span class="line">-p 指定其wsdl的命名空间，也就是要生成代码的包名:</span><br><span class="line">-d 指定要产生代码所在目录</span><br><span class="line">-server 生成服务器启动web service的代码</span><br><span class="line">-impl 生成web service的服务端代码</span><br></pre></td></tr></table></figure>
+
+<p>在指定工程生成了服务端代码</p>
+<p><img src="/2019/11/02/WebService学习系列之CXF开发WebService/11.webp" alt></p>
+<p>image.png</p>
+<p>因为指定了参数-server ,所以生成了启动类HelloWorldService_HelloWorldServicePort_Server</p>
+<p><img src="/2019/11/02/WebService学习系列之CXF开发WebService/12.webp" alt></p>
+<p>修改一下生成类的wsdl文件路径</p>
+<p><img src="/2019/11/02/WebService学习系列之CXF开发WebService/13.webp" alt></p>
+<p>直接启动HelloWorldService_HelloWorldServicePort_Server类</p>
+<p><img src="/2019/11/02/WebService学习系列之CXF开发WebService/14.webp" alt></p>
+<p>查看wsdl文件</p>
+<p><img src="/2019/11/02/WebService学习系列之CXF开发WebService/15.webp" alt></p>
+<p>到此为止，webservice服务端代码生成成功!<br>cxf强大之处在于通过wsdl文件生成的客户端和服务端不需要引入任何cxf的jar包！！！！，但是Axis2生成的服务端和客户端确需要引入大量jar包，这就是我不喜欢用它的原因！</p>
+
+      
+       <hr><span style="font-style: italic;color: gray;"> 转载请注明来源，欢迎对文章中的引用来源进行考证，欢迎指出任何有错误或不够清晰的表达。可以在下面评论区评论，也可以邮件至 451261884@qq.com </span>
+    </div>
+</article>
+
+
+<p>
+    <a href="javascript:void(0)" class="dashang" onclick="dashangToggle()">赏</a>
+</p>
+
+
+<div class="article_copyright">
+    <p><span class="copy-title">文章标题:</span>WebService学习系列之CXF开发WebService</p>
+    <p><span class="copy-title">文章字数:</span><span class="post-count">3.1k</span></p>
+    <p><span class="copy-title">本文作者:</span><a href="javascript:void(0)" title="汤高">汤高</a></p>
+    <p><span class="copy-title">发布时间:</span>2019-11-02, 21:55:42</p>
+    <p><span class="copy-title">最后更新:</span>2019-11-02, 22:28:33</p>
+    <span class="copy-title">原始链接:</span><a class="post-url" href="/2019/11/02/WebService学习系列之CXF开发WebService/" title="WebService学习系列之CXF开发WebService">https://tanggao1314.github.io/2019/11/02/WebService学习系列之CXF开发WebService/</a>
+    <p>
+        <span class="copy-title">版权声明:</span><i class="fa fa-creative-commons"></i> <a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/4.0/" title="CC BY-NC-SA 4.0 International" target = "_blank">"署名-非商用-相同方式共享 4.0"</a> 转载请保留原文链接及作者。
+    </p>
+</div>
+
+
+
+    <div id="comments"></div>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.css">
+
+<script type="text/javascript">
+    $.getScript('/js/gitalk.js', function () {
+        var gitalk = new Gitalk({
+            clientID: '7aa9b46cd8adc21eaa14',
+            clientSecret: 'c3639c38104fa7c2e388806c6451efc1e328468a',
+            repo: 'hexo_comment',
+            owner: 'tanggao1314',
+            admin: ['tanggao1314'],
+            id: decodeURI(location.pathname),
+            distractionFreeMode: 'true',
+            language: 'zh-CN',
+            perPage: parseInt('10',10)
+        })
+        gitalk.render('comments')
+    })
+</script>
+
+
+
+
+    
+
+
+
+
+    </div>
+    <div class="copyright">
+        <p class="footer-entry">©2016-2019 tanggao</p>
+<p class="footer-entry">Built with <a href="https://hexo.io/" target="_blank">Hexo</a> and <a href="https://tanggao1314.github.io/" target="_blank">作者</a> author</p>
+
+    </div>
+    <div class="full-toc">
+        <button class="full"><span class="min "></span></button>
+<button class="post-toc-menu"><span class="post-toc-menu-icons"></span></button>
+<div class="post-toc"><span class="post-toc-title">目录</span>
+    <div class="post-toc-content">
+
+    </div>
+</div>
+<a class="" id="rocket" href="javascript:void(0)"></a>
+    </div>
+</div>
+<div class="acParent"></div>
+
+<div class="hide_box" onclick="dashangToggle()"></div>
+<div class="shang_box">
+    <a class="shang_close" href="javascript:void(0)" onclick="dashangToggle()">×</a>
+    <div class="shang_tit">
+        <p>喜欢就点赞,疼爱就打赏</p>
+    </div>
+    <div class="shang_payimg">
+        <div class="pay_img">
+            <img src="/img/alipay.jpg" class="alipay" title="扫码支持">
+            <img src="/img/weixin.jpg" class="weixin" title="扫码支持">
+        </div>
+    </div>
+    <div class="shang_payselect">
+        <span><label><input type="radio" name="pay" checked value="alipay">支付宝</label></span><span><label><input type="radio" name="pay" value="weixin">微信</label></span>
+    </div>
+</div>
+
+
+</body>
+<script src="/js/jquery.pjax.js?v=1.0.1" ></script>
+
+<script src="/js/script.js?v=1.0.1" ></script>
+<script>
+    var img_resize = 'default';
+    /*作者、标签的自动补全*/
+    $(function () {
+        $('.search').AutoComplete({
+            'data': ['#基数排序','#希尔排序','#归并排序','#插入排序','#快速排序','#log','#选择排序','#redis','#webservice','#冒泡排序',],
+            'itemHeight': 20,
+            'width': 418
+        }).AutoComplete('show');
+    })
+    function initArticle() {
+        /*渲染对应的表格样式*/
+        
+            $(".post .pjax table").addClass("green_title");
+        
+
+        /*渲染打赏样式*/
+        
+        $("input[name=pay]").on("click", function () {
+            if($("input[name=pay]:checked").val()=="weixin"){
+                $(".shang_box .shang_payimg .pay_img").addClass("weixin_img");
+            } else {
+                $(".shang_box .shang_payimg .pay_img").removeClass("weixin_img");
+            }
+        })
+        
+
+        /*高亮代码块行号*/
+        
+        $('pre code').each(function(){
+            var lines = $(this).text().split('\n').length - 1, widther='';
+            if (lines>99) {
+                widther = 'widther'
+            }
+            var $numbering = $('<ul/>').addClass('pre-numbering ' + widther).attr("unselectable","on");
+            $(this).addClass('has-numbering ' + widther)
+                    .parent()
+                    .append($numbering);
+            for(var i=1;i<=lines;i++){
+                $numbering.append($('<li/>').text(i));
+            }
+        });
+        
+
+        /*访问数量*/
+        
+        $.getScript("//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js");
+        
+
+        /*代码高亮，行号对齐*/
+        $('.pre-numbering').css('line-height',$('.has-numbering').css('line-height'));
+
+        
+    }
+
+    /*打赏页面隐藏与展示*/
+    
+    function dashangToggle() {
+        $(".shang_box").fadeToggle();
+        $(".hide_box").fadeToggle();
+    }
+    
+
+</script>
+
+<!--加入行号的高亮代码块样式-->
+
+<style>
+    pre{
+        position: relative;
+        margin-bottom: 24px;
+        border-radius: 10px;
+        border: 1px solid #e2dede;
+        background: #FFF;
+        overflow: hidden;
+    }
+    code.has-numbering{
+        margin-left: 30px;
+    }
+    code.has-numbering.widther{
+        margin-left: 35px;
+    }
+    .pre-numbering{
+        margin: 0px;
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 20px;
+        padding: 0.5em 3px 0.7em 5px;
+        border-right: 1px solid #C3CCD0;
+        text-align: right;
+        color: #AAA;
+        background-color: ;
+    }
+    .pre-numbering.widther {
+        width: 35px;
+    }
+</style>
+
+<!--自定义样式设置-->
+<style>
+    
+    
+    .nav {
+        width: 542px;
+    }
+    .nav.fullscreen {
+        margin-left: -542px;
+    }
+    .nav-left {
+        width: 120px;
+    }
+    
+    
+    @media screen and (max-width: 1468px) {
+        .nav {
+            width: 492px;
+        }
+        .nav.fullscreen {
+            margin-left: -492px;
+        }
+        .nav-left {
+            width: 100px;
+        }
+    }
+    
+    
+    @media screen and (max-width: 1024px) {
+        .nav {
+            width: 492px;
+            margin-left: -492px
+        }
+        .nav.fullscreen {
+            margin-left: 0;
+        }
+        .nav .hide-list.fullscreen {
+            left: 492px
+        }
+    }
+    
+    @media screen and (max-width: 426px) {
+        .nav {
+            width: 100%;
+        }
+        .nav-left {
+            width: 100%;
+        }
+    }
+    
+    
+    .nav-right .title-list nav a .post-title, .nav-right .title-list #local-search-result a .post-title {
+        color: #383636;
+    }
+    
+    
+    .nav-right .title-list nav a .post-date, .nav-right .title-list #local-search-result a .post-date {
+        color: #5e5e5f;
+    }
+    
+    
+    .nav-right nav a.hover, #local-search-result a.hover{
+        background-color: #e2e0e0;
+    }
+    
+    
+
+    /*列表样式*/
+    
+    .post .pjax article .article-entry>ol, .post .pjax article .article-entry>ul, .post .pjax article>ol, .post .pjax article>ul{
+        border: #e2dede solid 1px;
+        border-radius: 10px;
+        padding: 10px 32px 10px 56px;
+    }
+    .post .pjax article .article-entry li>ol, .post .pjax article .article-entry li>ul,.post .pjax article li>ol, .post .pjax article li>ul{
+        padding-top: 5px;
+        padding-bottom: 5px;
+    }
+    .post .pjax article .article-entry>ol>li, .post .pjax article .article-entry>ul>li,.post .pjax article>ol>li, .post .pjax article>ul>li{
+        margin-bottom: auto;
+        margin-left: auto;
+    }
+    .post .pjax article .article-entry li>ol>li, .post .pjax article .article-entry li>ul>li,.post .pjax article li>ol>li, .post .pjax article li>ul>li{
+        margin-bottom: auto;
+        margin-left: auto;
+    }
+    
+
+    /* 背景图样式 */
+    
+    
+
+
+    /*引用块样式*/
+    
+
+    /*文章列表背景图*/
+    
+    .nav-right:before {
+        content: ' ';
+        display: block;
+        position: absolute;
+        left: 0;
+        top: 0;
+        width: 100%;
+        height: 100%;
+        opacity: 0.3;
+        background: url("https://i.loli.net/2019/07/22/5d3521411f3f169375.png");
+        background-repeat: no-repeat;
+        background-position: 50% 0;
+        -ms-background-size: cover;
+        -o-background-size: cover;
+        -moz-background-size: cover;
+        -webkit-background-size: cover;
+        background-size: cover;
+    }
+    
+
+    
+    .post .pjax article :not(pre) > code {
+        color: #24292e;
+        font-family: SFMono-Regular,Consolas,Liberation Mono,Menlo,Courier,monospace;
+        background-color: rgba(27,31,35,.05);
+        border-radius: 3px;
+        font-size: 85%;
+        margin: 0;
+        padding: .2em .4em;
+    }
+    
+</style>
+
+
+
+
+
+
+
+</html>
