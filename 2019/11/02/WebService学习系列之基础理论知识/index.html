@@ -7,13 +7,13 @@
   <meta name="description" content="WebService学习系列之基础理论知识 | 汤小高的个人博客">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 <meta property="og:type" content="website">
-<meta property="og:title" content="tags">
-<meta property="og:url" content="https://tanggao1314.github.io/tags/index.html">
+<meta property="og:title" content="categories">
+<meta property="og:url" content="https://tanggao1314.github.io/categories/index.html">
 <meta property="og:site_name" content="汤小高的个人博客">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2019-10-13T07:25:43.812Z">
+<meta property="og:updated_time" content="2019-10-13T07:25:21.237Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="tags">
+<meta name="twitter:title" content="categories">
 
 
 <link rel="icon" href="/img/avatar.jpg">
@@ -223,6 +223,10 @@
     </li>
     
     <li class="article-tag-list-item">
+        <a href="javascript:" class="color5">归并排序</a>
+    </li>
+    
+    <li class="article-tag-list-item">
         <a href="javascript:" class="color5">基数排序</a>
     </li>
     
@@ -240,10 +244,6 @@
     
     <li class="article-tag-list-item">
         <a href="javascript:" class="color5">选择排序</a>
-    </li>
-    
-    <li class="article-tag-list-item">
-        <a href="javascript:" class="color5">归并排序</a>
     </li>
     
     <li class="article-tag-list-item">
@@ -270,6 +270,14 @@
            data-author="" >
             <span class="post-title" title="webservice开发学习系列">webservice开发学习系列</span>
             <span class="post-date" title="2019-11-02 22:32:32">2019/11/02</span>
+        </a>
+        
+        <a  class="排序 "
+           href="/2019/10/13/归并排序/"
+           data-tag="归并排序"
+           data-author="" >
+            <span class="post-title" title="归并排序">归并排序</span>
+            <span class="post-date" title="2019-10-13 16:49:46">2019/10/13</span>
         </a>
         
         <a  class="排序 "
@@ -310,14 +318,6 @@
            data-author="" >
             <span class="post-title" title="选择排序">选择排序</span>
             <span class="post-date" title="2019-10-13 16:48:17">2019/10/13</span>
-        </a>
-        
-        <a  class="排序 "
-           href="/2019/10/13/归并排序/"
-           data-tag="归并排序"
-           data-author="" >
-            <span class="post-title" title="归并排序">归并排序</span>
-            <span class="post-date" title="2019-10-13 16:49:46">2019/10/13</span>
         </a>
         
         <a  class="排序 "
@@ -618,7 +618,7 @@
     /*作者、标签的自动补全*/
     $(function () {
         $('.search').AutoComplete({
-            'data': ['#webservice','#基数排序','#快速排序','#插入排序','#log','#选择排序','#归并排序','#希尔排序','#redis','#冒泡排序',],
+            'data': ['#webservice','#归并排序','#基数排序','#快速排序','#插入排序','#log','#选择排序','#希尔排序','#redis','#冒泡排序',],
             'itemHeight': 20,
             'width': 418
         }).AutoComplete('show');
